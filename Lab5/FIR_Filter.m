@@ -6,14 +6,18 @@ function y = FIR_Filter(x)
     %   
     % Output:
     %   y : filtered signal
-    
+
+    % Save input signal to file
+    save('input_signal.mat', 'x');  % Save as .mat file)
+
     num_taps = 64;
     Wn = 0.4;
     
     % Calculate filter coefficients
-    n = -num_taps/2:num_taps/2;
-    b = sinc(2 * Wn * n); 
-    bw = b .* hamming(length(b))'; % Apply Hamming window
+    % n = -num_taps/2:num_taps/2;
+    % b = Wn * sinc(Wn * n); 
+    % bw = b .* hamming(length(b))'; % Apply Hamming window
+    bw = fir1(num_taps, Wn);
     bw = bw / sum(bw); % Normalize coefficients
 
     % Initialize output and buffer
@@ -29,4 +33,7 @@ function y = FIR_Filter(x)
         % Compute filtered output
         y(i) = bw * z; % Dot product of coefficients and buffer
     end
+
+    % Save output signal to file
+    save('output_signal.mat', 'y');  % Save as .mat file
 end
