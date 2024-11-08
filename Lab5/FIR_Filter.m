@@ -6,27 +6,27 @@ function y = FIR_Filter(x)
     %   
     % Output:
     %   y : filtered signal
-    %
-    % num_taps : number of taps
-    % Wn : cutoff frequency
-
+    
     num_taps = 64;
     Wn = 0.4;
     
     % Calculate filter coefficients
-    b = Wn * sinc(Wn * (-num_taps/2:num_taps/2));
-    bw = b .* hamming(num_taps + 1)';  % Apply Hamming window
+    n = -num_taps/2:num_taps/2;
+    b = sinc(2 * Wn * n); 
+    bw = b .* hamming(length(b))'; % Apply Hamming window
+    bw = bw / sum(bw); % Normalize coefficients
 
     % Initialize output and buffer
     y = zeros(size(x));
-    z = zeros(num_taps + 1, 1);  % Buffer to store recent samples with the same length as bw
-    
+    z = zeros(length(bw), 1); % Adjust buffer size
+
     % Filtering process
     for i = 1:length(x)
         % Update buffer with new sample
-        z = [x(i); z(1:end-1)];
-        
-        % Compute filtered output as dot product of coefficients and buffer
-        y(i) = dot(bw, z);
+        z(2:end) = z(1:end-1);
+        z(1) = x(i);
+
+        % Compute filtered output
+        y(i) = bw * z; % Dot product of coefficients and buffer
     end
 end
