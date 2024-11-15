@@ -4,7 +4,7 @@
 `define QSIM_OUT_FN "./qsim.out"
 `define MATLAB_OUT_FN "./matlab_results.txt"
 
-module tb();
+module testb();
 
     // Clock and Reset
     reg clk;
@@ -12,6 +12,8 @@ module tb();
 
     // Input Registers
     reg [15:0] fixed_in;
+    reg [15:0] mult_a;  // Declare mult_a as reg
+    reg [15:0] mult_b;  // Declare mult_b as reg
     reg [31:0] add_acc_in;
     reg [31:0] add_multiplier_out;
 
@@ -48,8 +50,9 @@ module tb();
     integer error_count = 0;
     integer total_tests = 0;
 
-
+    // Declare ret_read to capture the result of fscanf
     integer ret_read;
+
     // Instantiate Modules
     converter uut_converter (
         .clk(clk),
@@ -87,8 +90,8 @@ module tb();
         // Initialize Inputs
         resetn = 0;
         fixed_in = 16'd0;
-        mult_a = 16'd0;
-        mult_b = 16'd0;
+        mult_a = 16'd0;  // Initialize mult_a
+        mult_b = 16'd0;  // Initialize mult_b
         add_acc_in = 32'd0;
         add_multiplier_out = 32'd0;
 
@@ -130,8 +133,8 @@ module tb();
 
             // Apply Inputs
             fixed_in = expected_fixed_in;
-            mult_a = expected_mult_a;
-            mult_b = expected_mult_b;
+            mult_a = expected_mult_a;  // Apply mult_a
+            mult_b = expected_mult_b;  // Apply mult_b
             add_acc_in = expected_add_acc_in;
             add_multiplier_out = expected_add_mult_out;
 
@@ -210,3 +213,4 @@ module tb();
     end
 
 endmodule // testbench
+

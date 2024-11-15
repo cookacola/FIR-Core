@@ -10,9 +10,9 @@ vmap work work
 vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/adder.v 
 vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/converter.v 
 vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/multiplier.v 
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/tb.v 
+vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/testb.v 
 
 # Run Simulator 
-vsim +acc -t ps -lib work tb 
+vsim +acc -t ps -lib work testb 
 do waveformat.do   
 run -all
