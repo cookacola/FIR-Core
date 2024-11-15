@@ -1,0 +1,80 @@
+m255
+K4
+z2
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/user/stud/fall23/cc4919/4823/ald-labs/Lab6
+vadder
+2/user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v
+Z1 !s110 1731709462
+!i10b 1
+!s100 c[Uhc4YSe]dH;cm8dPaa_1
+Ij6N4k5WQSK2GVaK`;Z5[i2
+R0
+Z2 w1731705623
+8/user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v
+F/user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v
+!i122 0
+L0 1 15
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OP;L;2024.2;79
+r1
+!s85 0
+31
+!s108 1731709461.000000
+!s107 /user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v|
+!s90 -reportprogress|300|+acc|-incr|/user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v|
+!i113 1
+Z5 o+acc
+Z6 tCvgOpt 0
+vconverter
+2/user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v
+R1
+!i10b 1
+!s100 QIX61nALnQKFB39Haj_^j1
+I>LF5X>:9KV3`[F;1D^UOj3
+R0
+w1731706942
+8/user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v
+F/user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v
+!i122 1
+L0 1 35
+R3
+R4
+r1
+!s85 0
+31
+Z7 !s108 1731709462.000000
+!s107 /user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v|
+!s90 -reportprogress|300|+acc|-incr|/user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v|
+!i113 1
+R5
+R6
+vmultiplier
+2/user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v
+R1
+!i10b 1
+!s100 iE6OV^lM5Ji6TQIZN@7G80
+I84mN8_Cj_czbBndXU8ZX^3
+R0
+R2
+8/user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v
+F/user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v
+!i122 2
+L0 1 16
+R3
+R4
+r1
+!s85 0
+31
+R7
+!s107 /user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v|
+!s90 -reportprogress|300|+acc|-incr|/user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v|
+!i113 1
+R5
+R6

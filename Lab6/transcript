@@ -1,0 +1,43 @@
+# do runsim.do
+# Model Technology ModelSim DE vmap 2024.2 Lib Mapping Utility 2024.05 May 20 2024
+# vmap work work 
+# Copying /tools/mentor/ModelSim/2024.2/modelsim_dlx/linuxpe/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# Model Technology ModelSim DE vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 17:24:21 on Nov 15,2024
+# vlog -reportprogress 300 "+acc" -incr /user/stud/fall23/cc4919/4823/ald-labs/Lab6/adder.v 
+# -- Compiling module adder
+# 
+# Top level modules:
+# 	adder
+# End time: 17:24:22 on Nov 15,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim DE vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 17:24:22 on Nov 15,2024
+# vlog -reportprogress 300 "+acc" -incr /user/stud/fall23/cc4919/4823/ald-labs/Lab6/converter.v 
+# -- Compiling module converter
+# 
+# Top level modules:
+# 	converter
+# End time: 17:24:22 on Nov 15,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim DE vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 17:24:22 on Nov 15,2024
+# vlog -reportprogress 300 "+acc" -incr /user/stud/fall23/cc4919/4823/ald-labs/Lab6/multiplier.v 
+# -- Compiling module multiplier
+# 
+# Top level modules:
+# 	multiplier
+# End time: 17:24:23 on Nov 15,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim DE vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 17:24:23 on Nov 15,2024
+# vlog -reportprogress 300 "+acc" -incr testbench.v 
+# ** Error: testbench.v(119): (vlog-2730) Undefined variable: 'ret_read'.
+# End time: 17:24:23 on Nov 15,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /tools/mentor/ModelSim/2024.2/modelsim_dlx/linuxpe/vlog failed.
+# Error in macro ./runsim.do line 13
+# /tools/mentor/ModelSim/2024.2/modelsim_dlx/linuxpe/vlog failed.
+#     while executing
+# "vlog +acc -incr testbench.v "
