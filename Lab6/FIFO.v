@@ -1,7 +1,12 @@
-module SYNC_FIFO(clk, rst, wr_en, rd_en, din, dout);
-	input clk, wr_en, rd_en, din, rst;
-	output reg dout;
-
+module FIFO#(parameter DEPTH=64, DWIDTH=16)
+(
+	input			clk, 
+				wr_en, 
+				rd_en, 
+				rst;
+	input [DWIDTH-1:0]	din;
+	output [DWIDTH-1:0]	dout;
+);
 	always @ (posedge clk) begin
 		if(!rst) begin
 			wptr <= 0;
