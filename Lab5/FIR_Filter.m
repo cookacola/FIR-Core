@@ -1,39 +1,24 @@
-function y = FIR_Filter(x)
-    % 64-tap FIR filter with a linear buffer implementation
-    %
-    % Input:
-    %   x : signal to be filtered
-    %   
-    % Output:
-    %   y : filtered signal
+function output = FIR_Filter(input, coefficients)
+    % FIR_filter applies FIR filtering on the input signal with 64-tap 16-bit precision
+    % Parameters:
+    %   input - Array of input signal samples (16-bit integers)
+    %   coefficients - Array of 64 FIR filter coefficients (16-bit integers)
+    % Returns:
+    %   output - Array of filtered signal samples (16-bit integers)
 
-    % Save input signal to file
-    save('input_signal.mat', 'x');  % Save as .mat file)
+    % Ensure coefficients array has exactly 64 taps
+    assert(length(coefficients) == 64, 'This FIR filter requires exactly 64 coefficients.');
 
-    num_taps = 64;
-    Wn = 0.4;
+    % Preallocate the output array
+    output = zeros(1, length(input), 'int16');  % 16-bit output precision
     
-    % Calculate filter coefficients
-    % n = -num_taps/2:num_taps/2;
-    % b = Wn * sinc(Wn * n); 
-    % bw = b .* hamming(length(b))'; % Apply Hamming window
-    bw = fir1(num_taps, Wn);
-    bw = bw / sum(bw); % Normalize coefficients
-
-    % Initialize output and buffer
-    y = zeros(size(x));
-    z = zeros(length(bw), 1); % Adjust buffer size
-
-    % Filtering process
-    for i = 1:length(x)
-        % Update buffer with new sample
-        z(2:end) = z(1:end-1);
-        z(1) = x(i);
-
-        % Compute filtered output
-        y(i) = bw * z; % Dot product of coefficients and buffer
+    % FIR filter implementation
+    for n = 1:length(input)
+        for k = 1:64
+            if n >= k
+                % Accumulate each product as a 16-bit integer
+                output(n) = output(n) + int16(coefficients(k)) * int16(input(n - k + 1));
+            end
+        end
     end
-
-    % Save output signal to file
-    save('output_signal.mat', 'y');  % Save as .mat file
 end

@@ -1,42 +1,13 @@
-% Testbench for FIR_Filter function
+% FIR_testbench.m - Testbench for FIR_filter function with 64 taps
 
-% Parameters
-Fs = 1000;         % Sampling frequency (Hz)
-t = 0:1/Fs:1-1/Fs; % Time vector (1 second duration)
-f_signal = 50;     % Frequency of the test signal (Hz)
-f_noise = 200;     % Frequency of noise (Hz)
+% Example input signal with 16-bit integer values
+input = int16(randi([-32768, 32767], 1, 100));  % 100 random 16-bit integers
+coefficients = int16(rand(1, 64) * 32767);  % 64 random coefficients (16-bit integers)
 
-% Generate test signal: a sinusoid at 50 Hz with added 200 Hz noise
-signal = sin(2 * pi * f_signal * t) + 0.5 * sin(2 * pi * f_noise * t);
+% Apply the FIR filter
+output = FIR_Filter(input, coefficients);
 
-% Apply FIR filter
-filtered_signal = FIR_Filter(signal);
-
-% Plot results
-figure;
-subplot(3,1,1);
-plot(t, signal);
-title('Original Signal (50 Hz with 200 Hz noise)');
-xlabel('Time (s)');
-ylabel('Amplitude');
-
-subplot(3,1,2);
-plot(t, filtered_signal);
-title('Filtered Signal');
-xlabel('Time (s)');
-ylabel('Amplitude');
-
-% Frequency domain analysis
-subplot(3,1,3);
-% Compute Fourier Transform of the filtered signal
-N = length(t);
-f = (0:N-1) * (Fs/N);  % Frequency vector
-signal_fft = abs(fft(signal));
-filtered_fft = abs(fft(filtered_signal));
-
-plot(f, signal_fft, 'b', f, filtered_fft, 'r');
-legend('Original Signal', 'Filtered Signal');
-title('Frequency Response');
-xlabel('Frequency (Hz)');
-ylabel('Magnitude');
-xlim([0, 300]); % Focus on low frequencies
+% Save input and output to .mat files
+save('input.mat', 'input');
+save('output.mat', 'output');
+disp('Input and output files saved successfully.');

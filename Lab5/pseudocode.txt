@@ -1,0 +1,19 @@
+Initialize:
+    coeff_mem[64]  # Array for preloaded coefficients (16-bit fixed-point)
+    fifo[64]       # FIFO buffer for input samples (16-bit fixed-point)
+    output = []    # List to store output values (16-bit floating-point)
+    temp_sum = 0   # Temporary variable for accumulation
+
+Process:
+    For each input sample x[n]:
+        Push x[n] into fifo (shifting previous values down)
+        temp_sum = 0
+
+        For i from 0 to 63:
+            temp_sum += coeff_mem[i] * fifo[i]  # Multiply-accumulate operation
+
+        Convert temp_sum to floating-point (FX16 to FP16)
+        Append result to output
+
+Output:
+    Return all calculated output samples
