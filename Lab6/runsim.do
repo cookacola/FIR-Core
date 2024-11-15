@@ -7,8 +7,10 @@ vlib work
 vmap work work
 
 # Include Netlist and Testbench
-vlog +acc -incr ../../rtl/lfsr1/lfsr1.v 
-vlog +acc -incr test_lfsr.v 
+vlog +acc -incr adder.v 
+vlog +acc -incr converter.v 
+vlog +acc -incr multiplier.v 
+vlog +acc -incr testbench.v 
 
 # Run Simulator 
 vsim +acc -t ps -lib work testbench 
