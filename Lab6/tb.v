@@ -4,7 +4,7 @@
 `define QSIM_OUT_FN "./qsim.out"
 `define MATLAB_OUT_FN "./matlab_results.txt"
 
-module testbench();
+module tb();
 
     // Clock and Reset
     reg clk;
