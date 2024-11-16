@@ -36,7 +36,7 @@ module tb_alu;
         .rst(rst),
         .a(a),
         .b(b),
-        .select(select),
+        .op_sel(select),
         .result(alu_out)
     );
 
