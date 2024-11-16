@@ -99,6 +99,10 @@ initial begin
     // Wait for a clock cycle after reset
     @(posedge clk);
     @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
 
     // -------------------------
     // Loop to Test Addition
