@@ -131,6 +131,7 @@ initial begin
 
         // Read expected sum from MATLAB
         ret_read = $fscanf(matlab_out_sum_file, "%d\n", matlab_sum);
+        @(posedge clk);
         if (ret_read != 1) begin
             $display("Error: Reading MATLAB sum file at iteration %d", i);
             $finish;
@@ -184,6 +185,7 @@ initial begin
 
         // Read expected product from MATLAB
         ret_read = $fscanf(matlab_out_prod_file, "%d\n", matlab_prod);
+        @(posedge clk);
         if (ret_read != 1) begin
             $display("Error: Reading MATLAB product file at iteration %d", i);
             $finish;
