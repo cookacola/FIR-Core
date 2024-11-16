@@ -14,13 +14,13 @@ module testb();
     reg [15:0] fixed_in;
     reg [15:0] mult_a;
     reg [15:0] mult_b;
-    reg [31:0] add_acc_in;
-    reg [31:0] add_multiplier_out;
+    reg [15:0] add_acc_in;
+    reg [15:0] add_multiplier_out;
 
     // Outputs from Modules
     wire [15:0] float_out;
-    wire [31:0] mult_result;
-    wire [31:0] add_acc_out;
+    wire [15:0] mult_result;
+    wire [15:0] add_acc_out;
 
     // File Handles
     integer qsim_out_file;
@@ -92,8 +92,8 @@ module testb();
         fixed_in = 16'd0;
         mult_a = 16'd0;  // Initialize mult_a
         mult_b = 16'd0;  // Initialize mult_b
-        add_acc_in = 32'd0;
-        add_multiplier_out = 32'd0;
+        add_acc_in = 16'd0;
+        add_multiplier_out = 16'd0;
 
         // File IO: Open Files for Writing
         qsim_out_file = $fopen(`QSIM_OUT_FN, "w");
