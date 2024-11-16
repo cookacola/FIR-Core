@@ -1,5 +1,6 @@
 function output = FIR_Filter(input, coefficients)
-    % FIR_filter applies FIR filtering on the input signal with 64-tap 16-bit precision
+    % Behavioural model for a FIR_filter applies FIR filtering on the 
+    % input signal with 64-tap 16-bit precision
     % Parameters:
     %   input - Array of input signal samples (16-bit integers)
     %   coefficients - Array of 64 FIR filter coefficients (16-bit integers)
