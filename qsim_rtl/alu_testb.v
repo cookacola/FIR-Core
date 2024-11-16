@@ -14,116 +14,120 @@ module tb_alu;
 
     // Inputs for ALU (multiplier + adder)
     reg [15:0] a, b;            // Operands for multiplication
-    reg [31:0] acc_in;          // Input to the adder's accumulator
+    reg [1:0] select;           // Selects the operation
 
     // Outputs from ALU
-    wire [31:0] mult_result;    // 32-bit multiplier result
-    wire [15:0] mult_result_16; // 16-bit truncated multiplier result
-    wire [31:0] acc_out;        // 32-bit adder result
-    wire [15:0] acc_out_16;     // 16-bit truncated adder result
+    wire [31:0] alu_out;        // 32-bit adder result
 
-    initial begin
-	    qsim_out_file = $fopen(`QSIM_OUT_FN, "w");
-	    if (!qsim_out_file) begin
-		    $display("Couldn't create the output file.")
-		    $finish;
-	    end
+    // File handles
+    integer qsim_out_file;
+    integer matlab_out_file;
+    integer coefficient_file;
+    integer input_file;
 
-            matlab_out_file = $fopen(`MATLAB_OUT_FN, "r");
-            if (!matlab_out_file) begin
-                    $display("Couldn't read the MATLAB file.")
-                    $finish;
-            end
+    // Temporary variables for reading data
+    integer ret_read;
+    integer temp_a, temp_b, temp_select;
+    integer i;
 
-	    coefficient_input_file = $fopen(`COEFFICIENT_INPUT_FN, "r");
-	    if (!coefficient_input_file) begin
-		    $display("Couldn't read the coefficient input.")
-		    $finish;
-	    end
-
-	    input_file = $fopen(`INPUT_FN, "r");
-	    if (!input_file) begin
-		    $display("Couldn't read the input file")
-		    $finish
-	    end
-	clk = 0
-	rst = 1
-	@(posedge clk);
-
-	@(negedge clk);
-	rst = 0;
-	
-	@(posedge clk);
-	for (i = 0 ; i < 64 ; i = i + 1) begin
-		ret_read = $fscanf(matlab_out_file, "%d", 
-
-	    
-
-    // Instantiate the multiplier
-    multiplier uut_multiplier (
+    // Instantiate the ALU
+    alu alu_0 (
         .clk(clk),
         .rst(rst),
         .a(a),
         .b(b),
-        .result(mult_result),
-        .result_16(mult_result_16)
+        .select(select),
+        .result(alu_out)
     );
 
-    // Instantiate the adder
-    adder uut_adder (
-        .clk(clk),
-        .rst(rst),
-        .acc_in(acc_in),
-        .multiplier_out(mult_result),
-        .acc_out(acc_out),
-        .acc_out_16(acc_out_16)
-    );
-
-    // Clock Generation: 10ns period
+    // Clock generation
     initial begin
         clk = 0;
-        forever #5 clk = ~clk; // Toggle every 5ns (10ns period)
+        forever #`HALF_CLOCK_PERIOD clk = ~clk;
     end
 
-    // Stimulus (Initial Block)
     initial begin
-        // Initialize Inputs
+        // Open output file for QSIM
+        qsim_out_file = $fopen(`QSIM_OUT_FN, "w");
+        if (qsim_out_file == 0) begin
+            $display("Couldn't create the QSIM output file.");
+            $finish;
+        end
+
+        // Open MATLAB output file for reading
+        matlab_out_file = $fopen(`MATLAB_OUT_FN, "r");
+        if (matlab_out_file == 0) begin
+            $display("Couldn't read the MATLAB output file.");
+            $finish;
+        end
+
+        // Open coefficient input file
+        coefficient_file = $fopen(`COEFFICIENT_INPUT_FN, "r");
+        if (coefficient_file == 0) begin
+            $display("Couldn't read the coefficient input file.");
+            $finish;
+        end
+
+        // Open input file
+        input_file = $fopen(`INPUT_FN, "r");
+        if (input_file == 0) begin
+            $display("Couldn't read the input file.");
+            $finish;
+        end
+
+        // Initialize signals
+        rst = 1;
+        a = 0;
+        b = 0;
+        select = 0;
+
+        // Apply reset
+        @(posedge clk);
+        @(negedge clk);
         rst = 0;
-        a = 16'd0;
-        b = 16'd0;
-        acc_in = 32'd0;
 
-        // Apply Reset
-        #10 rst = 1; // Apply reset
-        #10 rst = 0; // Release reset
+        // Wait for a clock cycle after reset
+        @(posedge clk);
 
-        // Test Case 1: Multiplication of two numbers
-        #10 a = 16'd10; b = 16'd5; // a = 10, b = 5
-        #10; // Wait for one clock cycle
+        // Loop to apply test vectors
+        for (i = 0; i < 64; i = i + 1) begin
+            // Read input operands
+            ret_read = $fscanf(input_file, "%d\n", temp_a);
+            if (ret_read != 1) begin
+                $display("Error: Reading input file at iteration %d", i);
+                $finish;
+            end
+            a = temp_a;
 
-        // Test Case 2: Accumulation with result from multiplier
-        #10 acc_in = 32'd0; // Reset accumulator to 0
-        #10 acc_in = acc_out + mult_result; // Add previous result to accumulator
+            ret_read = $fscanf(coefficient_file, "%d\n", temp_b);
+            if (ret_read != 1) begin
+                $display("Error: Reading coefficient file at iteration %d", i);
+                $finish;
+            end
+            b = temp_b;
 
-        // Test Case 3: More Multiplication and Accumulation
-        #10 a = 16'd7; b = 16'd3; // a = 7, b = 3 (New multiplication)
-        #10 acc_in = acc_out + mult_result; // Accumulate the new result
+            // Select operation
+            // Example: 2'b00 for add, 2'b01 for multiply
+            select = 2'b00; // Add operation
+            @(posedge clk);
 
-        // Test Case 4: Large multiplication and accumulation
-        #10 a = 16'd1024; b = 16'd2048; // Large multiplication test
-        #10 acc_in = acc_out + mult_result; // Accumulate the new result
+            select = 2'b01; // Multiply operation
+            @(posedge clk);
 
-        // End the simulation after a few cycles
-        #20;
+            // Capture ALU output after operations
+            @(posedge clk);
+            $fwrite(qsim_out_file, "%d\n", alu_out);
+        end
+
+        // Close all files
+        $fclose(qsim_out_file);
+        $fclose(matlab_out_file);
+        $fclose(coefficient_file);
+        $fclose(input_file);
+
+        // Finish simulation
+        $display("Testbench completed successfully.");
         $finish;
     end
 
-    // Display the results for each test case
-    always @(posedge clk) begin
-        // Monitor outputs for all test cases
-        $display("Time: %0t | a: %d, b: %d | mult_result: %d, mult_result_16: %d | acc_in: %d | acc_out: %d, acc_out_16: %d", 
-                 $time, a, b, mult_result, mult_result_16, acc_in, acc_out, acc_out_16);
-    end
-
 endmodule
-
