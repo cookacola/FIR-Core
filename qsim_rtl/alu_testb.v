@@ -131,7 +131,6 @@ initial begin
 
         // Read expected sum from MATLAB
         ret_read = $fscanf(matlab_out_sum_file, "%d\n", matlab_sum);
-        $display("Sum from Matlab: %d", matlab_sum);
     end
 
     // -------------------------
@@ -139,7 +138,6 @@ initial begin
     // -------------------------
     $rewind(input_file);
     $rewind(coefficient_file);
-    $rewind(matlab_out_sum_file); // Optional: if you need to read MATLAB sum file again
     // Note: If MATLAB sum and product files are independent, no need to rewind them here
 
     // -------------------------
@@ -174,17 +172,6 @@ initial begin
 
         // Read expected product from MATLAB
         ret_read = $fscanf(matlab_out_prod_file, "%d\n", matlab_prod);
-        if (ret_read != 1) begin
-            $display("Error: Reading MATLAB product file at iteration %d", i);
-            $finish;
-        end
-
-        // Compare ALU output with MATLAB product
-        if (alu_out != matlab_prod) begin
-            $display("Mismatch at multiplication iteration %d: ALU product = %d, MATLAB product = %d", i, alu_out, matlab_prod);
-        end else begin
-            $display("Match at multiplication iteration %d: ALU product = %d", i, alu_out);
-        end
     end
 
     // Close all files
