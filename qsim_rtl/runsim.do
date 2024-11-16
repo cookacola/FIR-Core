@@ -7,12 +7,10 @@ vlib work
 vmap work work
 
 # Include Netlist and Testbench
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/adder.v 
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/converter.v 
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/multiplier.v 
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/Lab6/testb.v 
+vlog +acc -incr ../rtl/alu.v 
+vlog +acc -incr alu_testb.v 
 
 # Run Simulator 
-vsim +acc -t ps -lib work testb 
+vsim +acc -t ps -lib work tb_alu
 do waveformat.do   
 run -all
