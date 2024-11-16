@@ -12,8 +12,8 @@ module testb();
 
     // Input Registers
     reg [15:0] fixed_in;
-    reg [15:0] mult_a;  // Declare mult_a as reg
-    reg [15:0] mult_b;  // Declare mult_b as reg
+    reg [15:0] mult_a;
+    reg [15:0] mult_b;
     reg [31:0] add_acc_in;
     reg [31:0] add_multiplier_out;
 
@@ -26,7 +26,7 @@ module testb();
     integer qsim_out_file;
     integer matlab_out_file;
 
-    // Expected Values
+    // Expected Values from MATLAB Output File
     integer expected_fixed_in;
     integer expected_float_out;
     integer expected_mult_a;
@@ -95,16 +95,16 @@ module testb();
         add_acc_in = 32'd0;
         add_multiplier_out = 32'd0;
 
-        // File IO
+        // File IO: Open Files for Writing
         qsim_out_file = $fopen(`QSIM_OUT_FN, "w");
         if (!qsim_out_file) begin
             $display("Error: Couldn't create the QSIM output file.");
             $finish;
         end
 
-        matlab_out_file = $fopen(`MATLAB_OUT_FN, "r");
+        matlab_out_file = $fopen(`MATLAB_OUT_FN, "w");  // Open MATLAB output file for writing
         if (!matlab_out_file) begin
-            $display("Error: Couldn't open the MATLAB expected results file.");
+            $display("Error: Couldn't open the MATLAB output file for writing.");
             $finish;
         end
 
@@ -131,7 +131,7 @@ module testb();
                                expected_add_mult_out,
                                expected_add_acc_out);
 
-            // Apply Inputs
+            // Apply Inputs to the DUT
             fixed_in = expected_fixed_in;
             mult_a = expected_mult_a;  // Apply mult_a
             mult_b = expected_mult_b;  // Apply mult_b
@@ -150,6 +150,18 @@ module testb();
             sim_add_acc_in = add_acc_in;
             sim_add_mult_out = add_multiplier_out;
             sim_add_acc_out = add_acc_out;
+
+            // Write Simulation Outputs to the MATLAB Output File
+            // Format: fixed_in float_out mult_a mult_b mult_result add_acc_in add_mult_out add_acc_out
+            $fwrite(matlab_out_file, "%d %h %d %d %d %d %d %d\n",
+                    sim_fixed_in,
+                    sim_float_out,
+                    sim_mult_a,
+                    sim_mult_b,
+                    sim_mult_result,
+                    sim_add_acc_in,
+                    sim_add_mult_out,
+                    sim_add_acc_out);
 
             // Write Simulation Outputs to QSIM Output File
             // Format: fixed_in float_out mult_a mult_b mult_result add_acc_in add_mult_out add_acc_out
