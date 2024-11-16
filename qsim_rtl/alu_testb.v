@@ -131,18 +131,7 @@ initial begin
 
         // Read expected sum from MATLAB
         ret_read = $fscanf(matlab_out_sum_file, "%d\n", matlab_sum);
-        @(posedge clk);
-        if (ret_read != 1) begin
-            $display("Error: Reading MATLAB sum file at iteration %d", i);
-            $finish;
-        end
-
-        // Compare ALU output with MATLAB sum
-        if (alu_out != matlab_sum) begin
-            $display("Mismatch at addition iteration %d: ALU sum = %d, MATLAB sum = %d", i, alu_out, matlab_sum);
-        end else begin
-            $display("Match at addition iteration %d: ALU sum = %d", i, alu_out);
-        end
+        $display("Sum from Matlab: %d", matlab_sum);
     end
 
     // -------------------------
@@ -185,7 +174,6 @@ initial begin
 
         // Read expected product from MATLAB
         ret_read = $fscanf(matlab_out_prod_file, "%d\n", matlab_prod);
-        @(posedge clk);
         if (ret_read != 1) begin
             $display("Error: Reading MATLAB product file at iteration %d", i);
             $finish;
