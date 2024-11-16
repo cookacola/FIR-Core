@@ -88,7 +88,7 @@ module tb_alu;
 
         // Wait for a clock cycle after reset
         @(posedge clk);
-
+        @(posedge clk);
         // Loop to apply test vectors
         for (i = 0; i < 64; i = i + 1) begin
             // Read input operands
