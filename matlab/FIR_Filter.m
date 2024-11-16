@@ -18,7 +18,6 @@ function output = FIR_Filter(input, coefficients)
         acc = int32(0);  % Use 32-bit accumulator to avoid overflow
         for k = 1:64
             if n >= k
-                % Accumulate each product as a 32-bit integer to handle overflow
                 acc = acc + int32(coefficients(k)) * int32(input(n - k + 1));
             end
         end

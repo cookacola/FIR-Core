@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-`define MATLAB_OUT_FN "../matlab/output.results"
+`define MATLAB_OUT_FN "../matlab/alutestoutput.txt"
 `define QSIM_OUT_FN "./qsim.out"
 `define SD #0.010
 `define HALF_CLOCK_PERIOD #0.90
@@ -109,6 +109,9 @@ module tb_alu;
             // Select operation
             // Example: 2'b00 for add, 2'b01 for multiply
             select = 2'b00; // Add operation
+            @(posedge clk);
+
+            $fwrite(qsim_out_file, "%d\n", alu_out);
             @(posedge clk);
 
             select = 2'b01; // Multiply operation
