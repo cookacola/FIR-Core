@@ -125,7 +125,6 @@ initial begin
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);
-        @(posedge clk);
 
         // Capture ALU output
         $fwrite(qsim_out_file, "Sum %d: %d\n", i, alu_out);
@@ -176,6 +175,7 @@ initial begin
 
         // Select multiplication operation
         select = 2'b01; // Multiply operation
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 
