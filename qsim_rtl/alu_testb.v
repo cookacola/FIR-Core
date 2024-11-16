@@ -43,7 +43,7 @@ module tb_alu;
     // Clock generation
     initial begin
         clk = 0;
-        forever #`HALF_CLOCK_PERIOD clk = ~clk;
+        forever `HALF_CLOCK_PERIOD clk = ~clk;
     end
 
     initial begin
