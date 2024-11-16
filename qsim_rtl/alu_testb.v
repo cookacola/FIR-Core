@@ -98,11 +98,6 @@ initial begin
 
     // Wait for a clock cycle after reset
     @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
 
     // -------------------------
     // Loop to Test Addition
@@ -127,6 +122,8 @@ initial begin
 
         // Select addition operation
         select = 2'b00; // Add operation
+        @(posedge clk);
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 
