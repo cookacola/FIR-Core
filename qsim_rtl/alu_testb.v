@@ -112,6 +112,7 @@ module tb_alu;
             // Example: 2'b00 for add, 2'b01 for multiply
             select = 2'b00; // Add operation
             @(posedge clk);
+            @(posedge clk);
 
             $fwrite(qsim_out_file, "%d\n", alu_out);
             @(posedge clk);
