@@ -36,7 +36,7 @@ module tb_alu;
         .rst(rst),
         .a(a),
         .b(b),
-        .select(select),
+        .op_sel(select),
         .result(alu_out)
     );
 
@@ -107,7 +107,7 @@ module tb_alu;
             b = temp_b;
 
             $display("Iteration %d: a = %d, b = %d", i, a, b);
-            
+
             // Select operation
             // Example: 2'b00 for add, 2'b01 for multiply
             select = 2'b00; // Add operation
