@@ -1,4 +1,10 @@
 `timescale 1ns/1ps
+`define MATLAB_OUT_FN "../matlab/output.results"
+`define QSIM_OUT_FN "./qsim.out"
+`define SD #0.010
+`define HALF_CLOCK_PERIOD #0.90
+`define COEFFICIENT_INPUT_FN "../matlab/coefficients.txt"
+`define INPUT_FN "../matlab/input.txt"
 
 module tb_alu;
 
@@ -15,6 +21,43 @@ module tb_alu;
     wire [15:0] mult_result_16; // 16-bit truncated multiplier result
     wire [31:0] acc_out;        // 32-bit adder result
     wire [15:0] acc_out_16;     // 16-bit truncated adder result
+
+    initial begin
+	    qsim_out_file = $fopen(`QSIM_OUT_FN, "w");
+	    if (!qsim_out_file) begin
+		    $display("Couldn't create the output file.")
+		    $finish;
+	    end
+
+            matlab_out_file = $fopen(`MATLAB_OUT_FN, "r");
+            if (!matlab_out_file) begin
+                    $display("Couldn't read the MATLAB file.")
+                    $finish;
+            end
+
+	    coefficient_input_file = $fopen(`COEFFICIENT_INPUT_FN, "r");
+	    if (!coefficient_input_file) begin
+		    $display("Couldn't read the coefficient input.")
+		    $finish;
+	    end
+
+	    input_file = $fopen(`INPUT_FN, "r");
+	    if (!input_file) begin
+		    $display("Couldn't read the input file")
+		    $finish
+	    end
+	clk = 0
+	rst = 1
+	@(posedge clk);
+
+	@(negedge clk);
+	rst = 0;
+	
+	@(posedge clk);
+	for (i = 0 ; i < 64 ; i = i + 1) begin
+		ret_read = $fscanf(matlab_out_file, "%d", 
+
+	    
 
     // Instantiate the multiplier
     multiplier uut_multiplier (
