@@ -2,8 +2,7 @@
 `define MATLAB_OUT_SUM_FN "../matlab/sum_output.txt"
 `define MATLAB_OUT_PROD_FN "../matlab/product_output.txt"
 `define QSIM_OUT_FN "./qsim.out"
-`define SD #0.010
-`define HALF_CLOCK_PERIOD #0.90
+`define HALF_CLOCK_PERIOD 0.90
 `define COEFFICIENT_INPUT_FN "../matlab/coefficients.txt"
 `define INPUT_FN "../matlab/input.txt"
 
@@ -14,11 +13,11 @@ reg clk;
 reg rst;
 
 // Inputs for ALU (multiplier + adder)
-reg [15:0] a, b;            // Operands for multiplication
-reg [1:0] select;           // Selects the operation
+reg signed [15:0] a, b;            // 16-bit signed operands
+reg [1:0] select;                   // Selects the operation
 
 // Outputs from ALU
-wire [31:0] alu_out;        // 32-bit adder result
+wire signed [31:0] alu_out;        // 32-bit signed ALU result
 
 // File handles
 integer qsim_out_file;
@@ -37,16 +36,16 @@ integer matlab_sum, matlab_prod;
 alu alu_0 (
     .clk(clk),
     .rst(rst),
+    .op_sel(select),
     .a(a),
     .b(b),
-    .op_sel(select),
     .result(alu_out)
 );
 
 // Clock generation
 initial begin
     clk = 0;
-    forever `HALF_CLOCK_PERIOD clk = ~clk;
+    forever #(HALF_CLOCK_PERIOD) clk = ~clk;
 end
 
 initial begin
@@ -105,6 +104,7 @@ initial begin
     for (i = 0; i < 64; i = i + 1) begin
         // Read input operands
         ret_read = $fscanf(input_file, "%d\n", temp_a);
+        $display("Addition Iteration %d: Read a = %d, ret_read = %d", i, temp_a, ret_read);
         if (ret_read != 1) begin
             $display("Error: Reading input file at addition iteration %d", i);
             $finish;
@@ -112,6 +112,7 @@ initial begin
         a = temp_a;
 
         ret_read = $fscanf(coefficient_file, "%d\n", temp_b);
+        $display("Addition Iteration %d: Read b = %d, ret_read = %d", i, temp_b, ret_read);
         if (ret_read != 1) begin
             $display("Error: Reading coefficient file at addition iteration %d", i);
             $finish;
@@ -122,15 +123,28 @@ initial begin
 
         // Select addition operation
         select = 2'b00; // Add operation
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
+        @(posedge clk); // Wait for clock edge
+        @(posedge clk); // Allow ALU to process
+        @(posedge clk); // Ensure result is ready
 
         // Capture ALU output
         $fwrite(qsim_out_file, "Sum %d: %d\n", i, alu_out);
+        $display("Addition Iteration %d: ALU sum = %d", i, alu_out);
 
         // Read expected sum from MATLAB
         ret_read = $fscanf(matlab_out_sum_file, "%d\n", matlab_sum);
+        $display("Addition Iteration %d: Read MATLAB sum = %d, ret_read = %d", i, matlab_sum, ret_read);
+        if (ret_read != 1) begin
+            $display("Error: Reading MATLAB sum file at iteration %d", i);
+            $finish;
+        end
+
+        // Compare ALU output with MATLAB sum
+        if (alu_out !== matlab_sum) begin
+            $display("Mismatch at addition iteration %d: ALU sum = %d, MATLAB sum = %d", i, alu_out, matlab_sum);
+        end else begin
+            $display("Match at addition iteration %d: ALU sum = %d", i, alu_out);
+        end
     end
 
     // -------------------------
@@ -138,6 +152,7 @@ initial begin
     // -------------------------
     $rewind(input_file);
     $rewind(coefficient_file);
+    $rewind(matlab_out_sum_file); // Optional: if you need to read MATLAB sum file again
     // Note: If MATLAB sum and product files are independent, no need to rewind them here
 
     // -------------------------
@@ -146,6 +161,7 @@ initial begin
     for (i = 0; i < 64; i = i + 1) begin
         // Read input operands
         ret_read = $fscanf(input_file, "%d\n", temp_a);
+        $display("Multiplication Iteration %d: Read a = %d, ret_read = %d", i, temp_a, ret_read);
         if (ret_read != 1) begin
             $display("Error: Reading input file at multiplication iteration %d", i);
             $finish;
@@ -153,6 +169,7 @@ initial begin
         a = temp_a;
 
         ret_read = $fscanf(coefficient_file, "%d\n", temp_b);
+        $display("Multiplication Iteration %d: Read b = %d, ret_read = %d", i, temp_b, ret_read);
         if (ret_read != 1) begin
             $display("Error: Reading coefficient file at multiplication iteration %d", i);
             $finish;
@@ -163,15 +180,28 @@ initial begin
 
         // Select multiplication operation
         select = 2'b01; // Multiply operation
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
+        @(posedge clk); // Wait for clock edge
+        @(posedge clk); // Allow ALU to process
+        @(posedge clk); // Ensure result is ready
 
         // Capture ALU output
         $fwrite(qsim_out_file, "Product %d: %d\n", i, alu_out);
+        $display("Multiplication Iteration %d: ALU product = %d", i, alu_out);
 
         // Read expected product from MATLAB
         ret_read = $fscanf(matlab_out_prod_file, "%d\n", matlab_prod);
+        $display("Multiplication Iteration %d: Read MATLAB product = %d, ret_read = %d", i, matlab_prod, ret_read);
+        if (ret_read != 1) begin
+            $display("Error: Reading MATLAB product file at iteration %d", i);
+            $finish;
+        end
+
+        // Compare ALU output with MATLAB product
+        if (alu_out !== matlab_prod) begin
+            $display("Mismatch at multiplication iteration %d: ALU product = %d, MATLAB product = %d", i, alu_out, matlab_prod);
+        end else begin
+            $display("Match at multiplication iteration %d: ALU product = %d", i, alu_out);
+        end
     end
 
     // Close all files
