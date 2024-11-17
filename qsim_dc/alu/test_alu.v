@@ -64,6 +64,9 @@ initial begin
         $finish;
     end
 
+    $dumpfile("./alu.vcd");
+    $dumpvars(0,tb_alu.alu_0);
+
     // Open MATLAB output product file for reading
     matlab_out_prod_file = $fopen(`MATLAB_OUT_PROD_FN, "r");
     if (matlab_out_prod_file == 0) begin
@@ -180,7 +183,9 @@ initial begin
     $fclose(matlab_out_prod_file);
     $fclose(coefficient_file);
     $fclose(input_file);
-
+    
+    $dumpall;
+    $dumpflush;
     // Finish simulation
     $display("Testbench completed successfully.");
     $finish;
