@@ -1,0 +1,815 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version U-2022.12-SP7 for linux64 - Oct 10, 2023 
+
+                    Copyright (c) 1988 - 2023 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+Current time:       Sat Nov 16 20:17:48 2024
+Hostname:           cadpc14
+CPU Model:          11th Gen Intel(R) Core(TM) i9-11900 @ 2.50GHz
+CPU Details:        Cores = 16 : Sockets = 1 : Cache Size = 16384 KB : Freq = 3.60 GHz
+OS:                 Linux 4.18.0-553.27.1.el8_10.x86_64
+RAM:                 62 GB (Free  37 GB)
+Swap:                31 GB (Free  31 GB)
+Work Filesystem:    /homes mounted to auto.homes
+Tmp Filesystem:     /tmp mounted to tmpfs
+Work Disk:          18974 GB (Free 6800 GB)
+Tmp Disk:            31 GB (Free  31 GB)
+
+CPU Load: 59%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6800 GB, Tmp Disk Free: 31 GB
+#########################################
+# TCL script for Design Compiler        #
+# MS 2015                               #
+#########################################
+#########################################
+# READ Design and Library               #
+#########################################
+set top_level alu
+alu
+source -verbose "./common_script/common.tcl"
+. /tools4/syn2007.12/libraries/syn/
+dw_foundation.sldb
+* /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db dw_foundation.sldb
+/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+read_verilog "../rtl/$top_level.v"
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+Loading db file '/tools/synopsys/syn/U-2022.12-SP7/libraries/syn/dw_foundation.sldb'
+Loading db file '/tools/synopsys/syn/U-2022.12-SP7/libraries/syn/gtech.db'
+Loading db file '/tools/synopsys/syn/U-2022.12-SP7/libraries/syn/standard.sldb'
+  Loading link library 'scx3_cmos8rf_lpvt_tt_1p2v_25c'
+  Loading link library 'gtech'
+Loading verilog file '/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v'
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v
+
+Statistics for case statements in always block at line 34 in file
+	'/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            38            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine alu line 16 in file
+		'/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    mult_out_reg     | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine alu line 25 in file
+		'/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     add_out_reg     | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine alu line 34 in file
+		'/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     result_reg      | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Current design is now '/homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.db:alu'
+Loaded 1 design.
+Current design is 'alu'.
+alu
+set set_fix_multiple_port_nets "true"
+true
+list_designs
+alu (*)
+1
+if { [check_error -v] == 1 } { exit 1 }
+#########################################
+# Design Constraints                    #
+#########################################
+current_design $top_level
+Current design is 'alu'.
+{alu}
+link
+
+  Linking design 'alu'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  alu                         /homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.db
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library) /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  dw_foundation.sldb (library) /tools/synopsys/syn/U-2022.12-SP7/libraries/syn/dw_foundation.sldb
+
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     U-2022.12-SP7
+Date:        Sat Nov 16 20:17:49 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               1
+    Cells do not drive (LINT-1)                                     1
+--------------------------------------------------------------------------------
+
+Warning: In design 'alu', cell 'B_4' does not drive any nets. (LINT-1)
+1
+source -verbose "./timing.tcl"
+2.00
+0
+0.010
+0.05
+0.05
+0.005
+1
+1
+1
+1
+1
+1
+Warning: Design rule attributes from the driving cell will be set on the port 'clk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'rst'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'op_sel[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'op_sel[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[0]'. (UID-401)
+1
+1
+1
+1
+1
+1
+set_max_capacitance 0.005 [all_inputs]
+1
+set_max_fanout 4 $top_level
+1
+set_max_fanout 4 [all_inputs]
+1
+set_max_area 0 
+1
+set_fix_multiple_port_nets -all -buffer_constants
+1
+#########################################
+# Compile                               #
+#########################################
+check_design
+ 
+****************************************
+check_design summary:
+Version:     U-2022.12-SP7
+Date:        Sat Nov 16 20:17:49 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               1
+    Cells do not drive (LINT-1)                                     1
+--------------------------------------------------------------------------------
+
+Warning: In design 'alu', cell 'B_4' does not drive any nets. (LINT-1)
+1
+#uniquify
+current_design $top_level
+Current design is 'alu'.
+{alu}
+link
+
+  Linking design 'alu'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  alu                         /homes/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.db
+  scx3_cmos8rf_lpvt_tt_1p2v_25c (library)
+                              /courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db
+  dw_foundation.sldb (library)
+                              /tools/synopsys/syn/U-2022.12-SP7/libraries/syn/dw_foundation.sldb
+
+1
+compile_ultra
+Information: Performing leakage power optimization. (PWR-850)
+CPU Load: 60%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6800 GB, Tmp Disk Free: 31 GB
+Analyzing: "/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | U-2022.12-DWBB_202212.5 |     *     |
+| Licensed DW Building Blocks        | U-2022.12-DWBB_202212.5 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Command Line | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 108                                    |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 96                                     |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 5                                      |
+| Number of Dont Touch Nets                               | 1                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -all -buffer_constants                 |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 1 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'alu'
+
+Loaded alib file './alib-52/scx3_cmos8rf_lpvt_tt_1p2v_25c.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+CPU Load: 69%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6811 GB, Tmp Disk Free: 31 GB
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'alu'
+Information: The register 'add_out_reg[17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'add_out_reg[31]' is a constant and will be removed. (OPT-1206)
+ Implement Synthetic for 'alu'.
+Information: Command 'do_operand_isolation' is obsolete and is being ignored.  Please refer to the replacement command 'set power_enable_datapath_gating true' instead. (INFO-118)
+CPU Load: 69%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6811 GB, Tmp Disk Free: 31 GB
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'HOLDX1TS' in the library 'scx3_cmos8rf_lpvt_tt_1p2v_25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+Information: Added key list 'DesignWare' to design 'alu'. (DDB-72)
+Information: Command 'do_operand_isolation' is obsolete and is being ignored.  Please refer to the replacement command 'set power_enable_datapath_gating true' instead. (INFO-118)
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:09   28954.1      2.59      65.8     704.4                           46680.0391      0.00  
+    0:00:09   28935.4      2.65      67.3     707.4                           46658.6523      0.00  
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:09   28935.4      2.65      67.3     707.4                           46658.6523      0.00  
+    0:00:09   28935.4      2.65      67.3     707.4                           46658.6523      0.00  
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:11   13861.4      4.10      94.3     484.1                           18821.2227      0.00  
+  Mapping 'alu_DW_mult_uns_2'
+    0:00:11   26216.6      5.06     138.0     610.9                           40985.6445      0.00  
+    0:00:11   26134.6      4.63     128.8     612.8                           40827.0703      0.00  
+    0:00:13   15536.2      2.78      70.6     772.8                           21694.3711      0.00  
+    0:00:13   15536.2      2.78      70.6     772.8                           21694.3711      0.00  
+    0:00:14   15804.0      2.64      68.0     772.8                           22207.7598      0.00  
+    0:00:14   15781.0      2.64      68.0     768.8                           22176.1719      0.00  
+    0:00:14   15691.7      2.64      67.7     761.6                           22107.9434      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:15   15603.8      2.62      67.5     761.0                           21957.7988      0.00  
+    0:00:15   16031.5      2.54      63.6     756.2                           22683.8105      0.00  
+    0:00:15   16031.5      2.54      63.6     756.2                           22683.8105      0.00  
+    0:00:16   16004.2      2.54      63.5     754.2                           22613.3926      0.00  
+    0:00:16   16004.2      2.54      63.5     754.2                           22613.3926      0.00  
+    0:00:19   16302.2      2.52      63.2     755.3                           22999.3105      0.00  
+    0:00:19   16302.2      2.52      63.2     755.3                           22999.3105      0.00  
+    0:00:19   16816.3      2.43      61.4     756.8                           23932.7578      0.00  
+    0:00:19   16816.3      2.43      61.4     756.8                           23932.7578      0.00  
+    0:00:24   17676.0      2.43      61.4     771.7                           25176.2969      0.00  
+    0:00:24   17676.0      2.43      61.4     771.7                           25176.2969      0.00  
+    0:00:31   19801.4      2.08      52.2     715.5                           28329.3203      0.00  
+    0:00:31   19801.4      2.08      52.2     715.5                           28329.3203      0.00  
+    0:00:36   20813.8      2.07      53.1     718.5                           29833.4785      0.00  
+    0:00:36   20813.8      2.07      53.1     718.5                           29833.4785      0.00  
+    0:00:45   22062.2      1.92      55.5     643.9                           31716.1113      0.00  
+    0:00:45   22062.2      1.92      55.5     643.9                           31716.1113      0.00  
+    0:00:48   22092.5      1.91      55.1     652.4                           31748.8867      0.00  
+    0:00:48   22092.5      1.91      55.1     652.4                           31748.8867      0.00  
+    0:00:53   22556.2      1.89      53.9     609.4                           32501.2969      0.00  
+    0:00:53   22556.2      1.89      53.9     609.4                           32501.2969      0.00  
+    0:00:57   22533.1      1.88      53.7     609.4                           32476.5703      0.00  
+
+
+  Beginning Design Rule Fixing  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:57   22533.1      1.88      53.7     609.4                           32476.5703      0.00  
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:00:59   23146.6      1.88      51.7     262.3 net4206                   33138.3008      0.00  
+    0:01:00   23217.1      1.83      52.4     253.7 mult_out_reg[23]/D        33183.0859      0.00  
+    0:01:02   23361.1      1.81      52.2     251.7 mult_out_reg[26]/D        33414.7344      0.00  
+    0:01:03   23460.5      1.79      52.2     247.7 mult_out_reg[23]/D        33562.8125      0.00  
+    0:01:04   23497.9      1.78      51.9     242.7 mult_out_reg[30]/D        33542.9805      0.00  
+    0:01:05   23604.5      1.77      51.4     242.7 mult_out_reg[23]/D        33751.3945      0.00  
+    0:01:06   23626.1      1.75      51.3     237.7 mult_out_reg[21]/D        33732.1523      0.00  
+    0:01:07   24153.1      1.90      54.9      46.0 mult_out_reg[26]/D        34274.8086      0.00  
+    0:01:09   24242.4      1.85      54.5      46.0 mult_out_reg[28]/D        34368.9023      0.00  
+    0:01:10   24288.5      1.83      49.9      46.0 mult_out_reg[25]/D        34439.6953      0.00  
+    0:01:11   24393.6      1.81      50.5      46.0 mult_out_reg[26]/D        34611.1250      0.00  
+    0:01:12   24402.2      1.80      50.1      46.0 mult_out_reg[26]/D        34613.5820      0.00  
+    0:01:13   24419.5      1.79      50.0      46.0 mult_out_reg[23]/D        34653.3125      0.00  
+    0:01:14   24684.5      1.80      50.1       0.0 mult_out_reg[26]/D        34969.9375      0.00  
+    0:01:15   24769.4      1.79      49.7       0.0                           35122.7812      0.00  
+    0:01:26   26017.9      1.92      52.6      54.6                           37031.3398      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:01:26   26017.9      1.92      52.6      54.6                           37031.3398      0.00  
+    0:01:29   26082.7      1.80      49.5      49.6 mult_out_reg[30]/D        37205.8633      0.00  
+    0:01:29   26125.9      1.78      49.3      46.8                           37254.8203      0.00  
+    0:01:48   27437.8      1.86      51.6     113.0                           39364.4102      0.00  
+    0:01:48   27437.8      1.86      51.6     113.0                           39364.4102      0.00  
+    0:01:48   27383.0      1.86      51.5     113.0                           39261.5117      0.00  
+    0:01:48   27383.0      1.86      51.5     113.0                           39261.5117      0.00  
+    0:02:05   28811.5      1.90      52.8     187.2                           41514.5352      0.00  
+    0:02:05   28811.5      1.90      52.8     187.2                           41514.5352      0.00  
+    0:02:05   28877.8      1.88      51.1     192.2                           41644.6250      0.00  
+    0:02:05   28877.8      1.88      51.1     192.2                           41644.6250      0.00  
+    0:02:20   30326.4      1.92      51.4     231.8                           43872.1562      0.00  
+    0:02:20   30326.4      1.92      51.4     231.8                           43872.1562      0.00  
+    0:02:25   30437.3      1.75      48.6     209.4                           44004.7148      0.00  
+    0:02:25   30437.3      1.75      48.6     209.4                           44004.7148      0.00  
+    0:02:27   30433.0      1.74      48.6     209.4                           43999.6172      0.00  
+    0:02:27   30433.0      1.74      48.6     209.4                           43999.6172      0.00  
+    0:02:27   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:27   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:28   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:28   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:28   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:28   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+    0:02:30   30466.1      1.74      48.6     209.4                           44052.1367      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:02:30   30460.3      1.74      48.6     208.4                           44045.3867      0.00  
+    0:02:31   27370.1      1.76      47.5     167.8                           38888.1328      0.00  
+    0:02:32   27303.8      1.73      46.9     151.5                           38804.1719      0.00  
+    0:02:32   27303.8      1.73      46.9     151.5                           38804.1719      0.00  
+    0:02:32   27303.8      1.73      46.5     151.5                           38802.1055      0.00  
+    0:02:33   26987.0      1.73      45.9      99.0 net7734                   38310.7500      0.00  
+    0:02:34   27158.4      1.71      46.4      91.4 mult_out_reg[29]/D        38602.3281      0.00  
+    0:02:36   27082.1      1.76      48.3      69.1 mult_out_reg[31]/D        38397.3242      0.00  
+    0:02:36   27129.6      1.74      47.7      69.1 mult_out_reg[26]/D        38434.2891      0.00  
+    0:02:37   27247.7      1.73      47.6      69.1 mult_out_reg[18]/D        38651.5430      0.00  
+    0:02:39   27596.2      1.78      51.2      10.0 mult_out_reg[26]/D        39284.3555      0.00  
+    0:02:40   27648.0      1.74      48.6      10.0 mult_out_reg[27]/D        39251.9297      0.00  
+    0:02:41   27760.3      1.72      48.3       9.0 mult_out_reg[31]/D        39461.6250      0.00  
+    0:02:42   27845.3      1.71      48.3       9.0 mult_out_reg[26]/D        39601.1016      0.00  
+    0:02:43   27871.2      1.71      48.2       9.0 mult_out_reg[29]/D        39645.7617      0.00  
+    0:02:43   27956.2      1.70      47.9       9.0 mult_out_reg[27]/D        39802.5781      0.00  
+    0:02:44   28018.1      1.69      47.8       9.0 mult_out_reg[31]/D        39887.6523      0.00  
+    0:02:45   28071.4      1.73      48.6       7.0 net7751                   39963.2070      0.00  
+    0:02:45   28075.7      1.74      48.8       0.0                           39953.4414      0.00  
+    0:02:50   28409.8      1.68      47.2      47.3                           40510.0352      0.00  
+    0:02:50   28409.8      1.68      47.2      47.3                           40510.0352      0.00  
+    0:02:51   28386.7      1.67      47.2      47.3                           40468.6445      0.00  
+    0:02:51   28386.7      1.67      47.2      47.3                           40468.6445      0.00  
+    0:02:51   28409.8      1.67      47.2      47.3                           40507.5000      0.00  
+    0:02:52   27380.2      1.67      46.8      47.3                           38655.1016      0.00  
+CPU Load: 65%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6824 GB, Tmp Disk Free: 31 GB
+Loading db file '/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+CPU Load: 66%, Ram Free: 37 GB, Swap Free: 31 GB, Work Disk Free: 6824 GB, Tmp Disk Free: 31 GB
+Information: Total number of MV cells in the design.
+----------------------------------------------------------------------------------------------------
+ MV Cells                                           Total Number                                   
+----------------------------------------------------------------------------------------------------
+ Level Shifter:                                     0                                             
+ Enable Level Shifter:                              0                                             
+ Isolation Cell:                                    0                                             
+ Retention Cell:                                    0                                             
+ Retention Clamp Cell:                              0                                             
+ Switch Cell:                                       0                                             
+ Always-On Cell:                                    0                                             
+ Repeater Cell:                                     0                                             
+
+----------------------------------------------------------------------------------------------------
+Unmapped MV Cells 
+----------------------------------------------------------------------------------------------------
+0 Isolation Cells are unmapped 
+0 Retention Clamp Cells are unmapped 
+----------------------------------------------------------------------------------------------------
+1
+#########################################
+# Optimize design                       #
+# Some pointers for possible optimizatio# 
+# Check the DC reference manual         #
+#########################################
+#set_transform_for_retiming {temp_reg[6] temp_reg[5] temp_reg[4] temp_reg[3] temp_reg[2] temp_reg[1] temp_reg[0]} dont_retime
+#optimize_registers -clock clk -edge rise -justification_effort high 
+#balance_registers
+#source -verbose "../script/timing.1.2ns.tcl"
+#pipeline_design -stages 8 -clock_port_name $clk_name -check_design -verbose -print_critical_loop
+#set_max_capacitance 1 [all_inputs] 
+#compile_ultra -no_autoungroup -no_boundary_optimization
+#remove_clock -all
+#pipeline_design -stages 8 -clock_port_name $clk_name -async_reset reset -check_design -verbose -minimum_period_only
+#########################################
+# Write outputs                         #
+#########################################
+source -verbose "./common_script/namingrules.tcl"
+1
+
+Design          Type    Object                  New Name
+--------------------------------------------------------------------------------
+alu             cell    mult_out_reg[13]        mult_out_reg_13_
+alu             cell    mult_out_reg[12]        mult_out_reg_12_
+alu             cell    mult_out_reg[11]        mult_out_reg_11_
+alu             cell    mult_out_reg[10]        mult_out_reg_10_
+alu             cell    mult_out_reg[9]         mult_out_reg_9_
+alu             cell    mult_out_reg[8]         mult_out_reg_8_
+alu             cell    mult_out_reg[7]         mult_out_reg_7_
+alu             cell    mult_out_reg[6]         mult_out_reg_6_
+alu             cell    mult_out_reg[5]         mult_out_reg_5_
+alu             cell    mult_out_reg[4]         mult_out_reg_4_
+alu             cell    mult_out_reg[3]         mult_out_reg_3_
+alu             cell    mult_out_reg[1]         mult_out_reg_1_
+alu             cell    mult_out_reg[0]         mult_out_reg_0_
+alu             cell    add_out_reg[16]         add_out_reg_16_
+alu             cell    add_out_reg[15]         add_out_reg_15_
+alu             cell    add_out_reg[14]         add_out_reg_14_
+alu             cell    add_out_reg[13]         add_out_reg_13_
+alu             cell    add_out_reg[12]         add_out_reg_12_
+alu             cell    add_out_reg[11]         add_out_reg_11_
+alu             cell    add_out_reg[10]         add_out_reg_10_
+alu             cell    add_out_reg[9]          add_out_reg_9_
+alu             cell    add_out_reg[8]          add_out_reg_8_
+alu             cell    add_out_reg[7]          add_out_reg_7_
+alu             cell    add_out_reg[6]          add_out_reg_6_
+alu             cell    add_out_reg[5]          add_out_reg_5_
+alu             cell    add_out_reg[4]          add_out_reg_4_
+alu             cell    add_out_reg[3]          add_out_reg_3_
+alu             cell    add_out_reg[2]          add_out_reg_2_
+alu             cell    add_out_reg[1]          add_out_reg_1_
+alu             cell    add_out_reg[0]          add_out_reg_0_
+alu             cell    result_reg[31]          result_reg_31_
+alu             cell    result_reg[30]          result_reg_30_
+alu             cell    result_reg[29]          result_reg_29_
+alu             cell    result_reg[28]          result_reg_28_
+alu             cell    result_reg[27]          result_reg_27_
+alu             cell    result_reg[26]          result_reg_26_
+alu             cell    result_reg[25]          result_reg_25_
+alu             cell    result_reg[24]          result_reg_24_
+alu             cell    result_reg[23]          result_reg_23_
+alu             cell    result_reg[22]          result_reg_22_
+alu             cell    result_reg[21]          result_reg_21_
+alu             cell    result_reg[20]          result_reg_20_
+alu             cell    result_reg[19]          result_reg_19_
+alu             cell    result_reg[18]          result_reg_18_
+alu             cell    result_reg[16]          result_reg_16_
+alu             cell    result_reg[15]          result_reg_15_
+alu             cell    result_reg[14]          result_reg_14_
+alu             cell    result_reg[13]          result_reg_13_
+alu             cell    result_reg[12]          result_reg_12_
+alu             cell    result_reg[11]          result_reg_11_
+alu             cell    result_reg[10]          result_reg_10_
+alu             cell    result_reg[9]           result_reg_9_
+alu             cell    result_reg[8]           result_reg_8_
+alu             cell    result_reg[7]           result_reg_7_
+alu             cell    result_reg[6]           result_reg_6_
+alu             cell    result_reg[5]           result_reg_5_
+alu             cell    result_reg[4]           result_reg_4_
+alu             cell    result_reg[3]           result_reg_3_
+alu             cell    result_reg[1]           result_reg_1_
+alu             cell    result_reg[0]           result_reg_0_
+alu             cell    mult_out_reg[2]         mult_out_reg_2_
+alu             cell    mult_out_reg[14]        mult_out_reg_14_
+alu             cell    mult_out_reg[15]        mult_out_reg_15_
+alu             cell    mult_out_reg[19]        mult_out_reg_19_
+alu             cell    mult_out_reg[17]        mult_out_reg_17_
+alu             cell    mult_out_reg[16]        mult_out_reg_16_
+alu             cell    mult_out_reg[18]        mult_out_reg_18_
+alu             cell    mult_out_reg[20]        mult_out_reg_20_
+alu             cell    mult_out_reg[23]        mult_out_reg_23_
+alu             cell    mult_out_reg[24]        mult_out_reg_24_
+alu             cell    mult_out_reg[28]        mult_out_reg_28_
+alu             cell    mult_out_reg[25]        mult_out_reg_25_
+alu             cell    mult_out_reg[31]        mult_out_reg_31_
+alu             cell    mult_out_reg[30]        mult_out_reg_30_
+alu             cell    mult_out_reg[29]        mult_out_reg_29_
+alu             cell    mult_out_reg[27]        mult_out_reg_27_
+alu             cell    mult_out_reg[26]        mult_out_reg_26_
+alu             cell    mult_out_reg[22]        mult_out_reg_22_
+alu             cell    mult_out_reg[21]        mult_out_reg_21_
+alu             cell    result_reg[17]          result_reg_17_
+alu             cell    result_reg[2]           result_reg_2_
+alu             net     n6                      n6010
+alu             net     n7                      n7010
+alu             net     n8                      n8010
+alu             net     n9                      n9010
+alu             net     n10                     n1007
+alu             net     n11                     n11100
+alu             net     n12                     n12010
+alu             net     n13                     n13010
+alu             net     n14                     n14010
+alu             net     n15                     n15010
+alu             net     n16                     n16010
+alu             net     n17                     n17010
+alu             net     n18                     n18010
+alu             net     n19                     n1900
+alu             net     n20                     n200
+alu             net     n21                     n2100
+alu             net     n22                     n2200
+alu             net     n23                     n2300
+alu             net     n24                     n2400
+alu             net     n25                     n2500
+alu             net     n26                     n2600
+alu             net     n27                     n270
+alu             net     n28                     n2800
+alu             net     n29                     n290
+alu             net     n30                     n3000
+alu             net     n31                     n3100
+alu             net     n32                     n3200
+alu             net     n33                     n3300
+alu             net     n34                     n3400
+alu             net     n36                     n3600
+alu             net     n38                     n3800
+alu             net     n39                     n3900
+alu             net     n40                     n4000
+alu             net     n42                     n4200
+alu             net     n44                     n4400
+alu             net     n45                     n4500
+alu             net     n46                     n4600
+alu             net     n47                     n4700
+alu             net     n48                     n4800
+alu             net     n49                     n4900
+alu             net     n50                     n5000
+alu             net     n51                     n5100
+alu             net     n52                     n5200
+alu             net     n60                     n6000
+alu             net     n70                     n7000
+alu             net     n80                     n8000
+alu             net     n90                     n9000
+alu             net     n100                    n10000
+alu             net     n105                    n10500
+alu             net     n106                    n10600
+alu             net     n107                    n10700
+alu             net     n108                    n10800
+alu             net     n109                    n10900
+alu             net     n110                    n11000
+alu             net     n111                    n11110
+alu             net     n112                    n11200
+alu             net     n113                    n11300
+alu             net     n114                    n11400
+alu             net     n115                    n11500
+alu             net     n116                    n11600
+alu             net     n117                    n11700
+alu             net     n118                    n11800
+alu             net     n119                    n11900
+alu             net     n120                    n12000
+alu             net     n130                    n13000
+alu             net     n140                    n14000
+alu             net     n150                    n15000
+alu             net     n160                    n16000
+alu             net     n170                    n17000
+alu             net     n180                    n18000
+alu             net     n190                    n1901
+alu             net     n210                    n2101
+alu             net     n220                    n2201
+alu             net     n230                    n2301
+alu             net     n240                    n2401
+alu             net     n250                    n2501
+alu             net     n260                    n2601
+alu             net     n280                    n2801
+alu             net     n300                    n3001
+alu             net     n310                    n3101
+alu             net     n320                    n3201
+alu             net     n330                    n3301
+alu             net     n340                    n3401
+alu             net     n360                    n3601
+alu             net     n380                    n3801
+alu             net     n390                    n3901
+alu             net     n400                    n4001
+alu             net     n420                    n4201
+alu             net     n440                    n4401
+alu             net     n450                    n4501
+alu             net     n460                    n4601
+alu             net     n470                    n4701
+alu             net     n480                    n4801
+alu             net     n490                    n4901
+alu             net     n500                    n5001
+alu             net     n510                    n5101
+alu             net     n520                    n5201
+alu             net     n600                    n6001
+alu             net     n700                    n7001
+alu             net     n800                    n8001
+alu             net     n900                    n9001
+alu             net     n1000                   n10001
+alu             net     n1050                   n10501
+alu             net     n1060                   n10601
+alu             net     n1070                   n10701
+alu             net     n1080                   n10801
+alu             net     n1090                   n10901
+alu             net     n1100                   n11001
+alu             net     n1110                   n11101
+alu             net     n1111                   n11111
+alu             net     n1120                   n11201
+alu             net     n1130                   n11301
+alu             net     n1140                   n11401
+alu             net     n1150                   n11501
+alu             net     n1160                   n11601
+alu             net     n1170                   n11701
+alu             net     n1180                   n11801
+alu             net     n1190                   n11901
+alu             net     n1200                   n12001
+alu             net     n1300                   n13001
+alu             net     n1400                   n14001
+alu             net     n1500                   n15001
+alu             net     n1600                   n16001
+alu             net     n1700                   n17001
+alu             net     n1800                   n18001
+1
+1
+set verilogout_no_tri TRUE
+TRUE
+write -hierarchy -format verilog -output "${top_level}.nl.v"
+Writing verilog file '/homes/user/stud/fall23/ns3683/4823/ald-labs/dc/alu.nl.v'.
+1
+#write_sdf -context verilog "${top_level}.temp.sdf"
+write_sdc "${top_level}.syn.sdc" -version 1.7
+1
+write_sdf "${top_level}.syn.sdf"
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/homes/user/stud/fall23/ns3683/4823/ald-labs/dc/alu.syn.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+# Generate report file
+set maxpaths 20
+20
+set rpt_file "${top_level}.dc.rpt"
+alu.dc.rpt
+check_design > $rpt_file
+report_area  >> ${rpt_file}
+report_power -hier -analysis_effort medium >> ${rpt_file}
+report_design >> ${rpt_file}
+report_cell >> ${rpt_file}
+report_port -verbose >> ${rpt_file}
+report_compile_options >> ${rpt_file}
+report_constraint -all_violators -verbose >> ${rpt_file}
+report_timing -path full -delay max -max_paths $maxpaths -nworst 100 >> ${rpt_file}
+report_timing -delay max -nworst 1 -max_paths 10000 -path end -nosplit -unique -sort_by slack > ${top_level}.syn.critical_regs
+report_timing -delay max -nworst 1 -max_paths 10000 -path full -nosplit -unique -sort_by slack > ${top_level}.syn.critical_regs.full
+report_timing -delay max -nworst 1 -max_paths 10000 -path end -nosplit -unique -sort_by slack -to [all_outputs] > ${top_level}.syn.critical_regs.output
+report_timing -delay max -nworst 1 -max_paths 10000 -path end -nosplit -unique -sort_by slack -to [all_registers -data_pins] > ${top_level}.syn.critical_regs.regs
+report_timing -delay min -nworst 1 -max_paths 10000 -path short -nosplit -unique -sort_by slack > ${top_level}.syn.fast_path
+quit
+
+Memory usage for this session 260 Mbytes.
+Memory usage for this session including child processes 260 Mbytes.
+CPU usage for this session 288 seconds ( 0.08 hours ).
+Elapsed time for this session 297 seconds ( 0.08 hours ).
+
+Thank you...

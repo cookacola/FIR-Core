@@ -1,0 +1,51 @@
+ 
+****************************************
+Report : timing
+        -path end
+        -delay max
+        -max_paths 10000
+        -sort_by slack
+Design : alu
+Version: U-2022.12-SP7
+Date   : Sat Nov 16 20:22:37 2024
+****************************************
+
+Operating Conditions: tt_1p2v_25c   Library: scx3_cmos8rf_lpvt_tt_1p2v_25c
+Wire Load Model Mode: top
+
+Endpoint                         Path Delay     Path Required     Slack
+------------------------------------------------------------------------
+result[17] (out)                    0.80 f            1.95         1.15
+result[2] (out)                     0.80 f            1.95         1.15
+result[31] (out)                    0.79 f            1.95         1.16
+result[30] (out)                    0.79 f            1.95         1.16
+result[29] (out)                    0.79 f            1.95         1.16
+result[28] (out)                    0.79 f            1.95         1.16
+result[27] (out)                    0.79 f            1.95         1.16
+result[26] (out)                    0.79 f            1.95         1.16
+result[25] (out)                    0.79 f            1.95         1.16
+result[24] (out)                    0.79 f            1.95         1.16
+result[23] (out)                    0.79 f            1.95         1.16
+result[22] (out)                    0.79 f            1.95         1.16
+result[21] (out)                    0.79 f            1.95         1.16
+result[20] (out)                    0.79 f            1.95         1.16
+result[19] (out)                    0.79 f            1.95         1.16
+result[18] (out)                    0.79 f            1.95         1.16
+result[16] (out)                    0.79 f            1.95         1.16
+result[15] (out)                    0.79 f            1.95         1.16
+result[14] (out)                    0.79 f            1.95         1.16
+result[13] (out)                    0.79 f            1.95         1.16
+result[12] (out)                    0.79 f            1.95         1.16
+result[11] (out)                    0.79 f            1.95         1.16
+result[10] (out)                    0.79 f            1.95         1.16
+result[9] (out)                     0.79 f            1.95         1.16
+result[8] (out)                     0.79 f            1.95         1.16
+result[7] (out)                     0.79 f            1.95         1.16
+result[6] (out)                     0.79 f            1.95         1.16
+result[5] (out)                     0.79 f            1.95         1.16
+result[4] (out)                     0.79 f            1.95         1.16
+result[3] (out)                     0.79 f            1.95         1.16
+result[1] (out)                     0.79 f            1.95         1.16
+result[0] (out)                     0.79 f            1.95         1.16
+
+1
