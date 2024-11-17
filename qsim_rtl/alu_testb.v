@@ -2,7 +2,7 @@
 `define MATLAB_OUT_SUM_FN "../matlab/sum_output.txt"
 `define MATLAB_OUT_PROD_FN "../matlab/product_output.txt"
 `define QSIM_OUT_FN "./qsim.out"
-`define HALF_CLOCK_PERIOD 0.90
+`define HALF_CLOCK_PERIOD #0.90
 `define COEFFICIENT_INPUT_FN "../matlab/coefficients.txt"
 `define INPUT_FN "../matlab/input.txt"
 
