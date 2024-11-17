@@ -43,9 +43,9 @@ alu alu_0 (
 );
 
 // Clock generation
-initial begin
-    clk = 0;
-    forever #(HALF_CLOCK_PERIOD) clk = ~clk;
+always begin
+    `HALF_CLOCK_PERIOD;
+    clk = ~clk;
 end
 
 initial begin
@@ -59,7 +59,7 @@ initial begin
     // Open MATLAB output sum file for reading
     matlab_out_sum_file = $fopen(`MATLAB_OUT_SUM_FN, "r");
     if (matlab_out_sum_file == 0) begin
-        $display("Couldn't read the MATLAB output sum file.");
+        $display(   "Couldn't read the MATLAB output sum file.");
         $finish;
     end
 
