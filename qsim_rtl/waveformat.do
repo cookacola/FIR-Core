@@ -1,12 +1,13 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /testbench/clk
-add wave -noupdate /testbench/resetn
-add wave -noupdate /testbench/i
-add wave -noupdate -radix unsigned /testbench/lfsr_out
-add wave -noupdate -radix unsigned /testbench/lfsr_out_matlab
-add wave -noupdate /testbench/lfsr_out_qsim
-add wave -noupdate -radix unsigned /testbench/error_count
+add wave -noupdate /tb_alu/clk
+add wave -noupdate /tb_alu/rst
+add wave -noupdate /tb_alu/a
+add wave -noupdate /tb_alu/b
+add wave -noupdate -radix unsigned /tb_alu/alu_out
+add wave -noupdate  /tb_alu/qsim_out_file
+add wave -noupdate -radix unsigned /tb_alu/matlab_out_sum_file
+add wave -noupdate -radix unsigned /tb_alu/matlab_out_prod_file
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
