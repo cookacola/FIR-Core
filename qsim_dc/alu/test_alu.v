@@ -3,7 +3,7 @@
 `define MATLAB_OUT_PROD_FN "../../matlab/product_output.txt"
 `define QSIM_OUT_FN "./qsim.out"
 `define SD #0.010
-`define HALF_CLOCK_PERIOD #50
+`define HALF_CLOCK_PERIOD #0.90
 `define COEFFICIENT_INPUT_FN "../../matlab/coefficients.txt"
 `define INPUT_FN "../../matlab/input.txt"
 
