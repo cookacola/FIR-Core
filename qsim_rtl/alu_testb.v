@@ -44,8 +44,8 @@ alu alu_0 (
 
 // Clock generation
 always begin
-    `HALF_CLOCK_PERIOD;
-    clk = ~clk;
+    clk = 0;
+    forever `HALF_CLOCK_PERIOD clk = ~clk;
 end
 
 initial begin
