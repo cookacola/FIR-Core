@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running lc_shell Version U-2022.12-SP6 for linux64 -- Aug 08, 2023
-#@ # Date:   Sat Nov 23 15:14:07 2024
+#@ # Date:   Sat Nov 23 15:56:16 2024
 #@ # Run by: ns3683@cadpc14
 #@ 
 
@@ -6012,8 +6012,8 @@ source /tools/synopsys/lc/U-2022.12-SP6/admin/setup//.synopsys_lc.setup
 
 #@ # -- End source /tools/synopsys/lc/U-2022.12-SP6/admin/setup//.synopsys_lc.setup
 
-source -echo -verbose /tmp/1231063_1732392846324134/nglc_shell_command.tcl
-#@ # -- Starting source /tmp/1231063_1732392846324134/nglc_shell_command.tcl
+source -echo -verbose /tmp/1256929_1732395375476232/nglc_shell_command.tcl
+#@ # -- Starting source /tmp/1256929_1732395375476232/nglc_shell_command.tcl
 
 #@ catch { set ::upf_ls_strategy_in_inst_name [list [binary format H* 66616c7365]] }
 #@ catch { set ::upf_suppress_message_in_etm [list [binary format H* 74727565]] }
@@ -6088,7 +6088,7 @@ source -echo -verbose /tmp/1231063_1732392846324134/nglc_shell_command.tcl
 #@ catch { set ::high_fanout_net_threshold [list [binary format H* 31303030]] }
 #@ catch { set ::hdlin_shorten_long_module_name [list [binary format H* 66616c7365]] }
 #@ catch { set ::_mv_sort_power_pin_order [list [binary format H* 74727565]] }
-#@ catch { set ::FILE [list [binary format H* 66696c653135]] }
+#@ catch { set ::FILE [list [binary format H* 66696c653134]] }
 #@ catch { set ::test_enable_capture_checks [list [binary format H* 74727565]] }
 #@ catch { set ::sh_dev_null [list [binary format H* 2f6465762f6e756c6c]] }
 #@ catch { set ::view_log_file "" }
@@ -6779,7 +6779,7 @@ source -echo -verbose /tmp/1231063_1732392846324134/nglc_shell_command.tcl
 #@ catch { set ::power_lib2saif_rise_fall_pd [list [binary format H* 66616c7365]] }
 #@ catch { set ::acs_use_autopartition [list [binary format H* 66616c7365]] }
 #@ catch { set ::bin_path [list [binary format H* 2f746f6f6c732f73796e6f707379732f73796e2f552d323032322e31322d5350372f6c696e757836342f73796e2f62696e]] }
-#@ catch { set ::nglc_log_path [list [binary format H* 313233313036335f31373332333932383436333234313334]] }
+#@ catch { set ::nglc_log_path [list [binary format H* 313235363932395f31373332333935333735343736323332]] }
 #@ catch { set ::duplicate_ports [list [binary format H* 66616c7365]] }
 #@ catch { set ::compile_seqmap_propagate_high_effort [list [binary format H* 74727565]] }
 #@ catch { set ::do_clkmap_CLOCK_U_prefix [list [binary format H* 74727565]] }

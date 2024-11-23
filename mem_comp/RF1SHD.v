@@ -15,13 +15,13 @@
 //           			IBM CMRF8SF-LPVT Process
 //      version:		2008Q3V1
 //      comment:		
-//      configuration:	 -instname RF1SHD -words 128 -bits 64 -frequency 1 -ring_width 2.0 -mux 2 -write_mask off -wp_size 8 -top_layer "m6-m8_m4" -power_type rings -horiz met3 -vert met2 -cust_comment "" -bus_notation on -left_bus_delim "[" -right_bus_delim "]" -pwr_gnd_rename "VDD:VDD,GND:VSS" -prefix "" -pin_space 0.0 -name_case upper -check_instname on -diodes on -inside_ring_type GND -drive 4 -asvm on -corners ff_1p32v_m55c,ff_1p65v_125c,tt_1p2v_25c,ss_1p08v_m55c
+//      configuration:	 -instname RF1SHD -words 64 -bits 16 -frequency 1 -ring_width 2.0 -mux 2 -write_mask off -wp_size 8 -top_layer "m6-m8_m4" -power_type rings -horiz met3 -vert met2 -cust_comment "" -bus_notation on -left_bus_delim "[" -right_bus_delim "]" -pwr_gnd_rename "VDD:VDD,GND:VSS" -prefix "" -pin_space 0.0 -name_case upper -check_instname on -diodes on -inside_ring_type GND -drive 4 -asvm on -corners ff_1p32v_m55c,ff_1p65v_125c,tt_1p2v_25c,ss_1p08v_m55c
 //
 //      Verilog model for Synchronous Single-Port Register File
 //
 //      Instance Name:              RF1SHD
-//      Words:                      128
-//      Bits:                       64
+//      Words:                      64
+//      Bits:                       16
 //      Mux:                        2
 //      Drive:                      4
 //      Write Mask:                 Off
@@ -31,7 +31,7 @@
 //      Redundant Columns:          0
 //      Test Muxes                  Off
 //
-//      Creation Date:  2024-11-23 20:01:06Z
+//      Creation Date:  2024-11-23 20:53:13Z
 //      Version: 	2008Q3V1
 //
 //      Modeling Assumptions: This model supports full gate level simulation
@@ -58,15 +58,15 @@
                 A,
                 D
                 );
-   parameter                BITS = 64;
-   parameter                WORD_DEPTH = 128;
-   parameter                ADDR_WIDTH = 7;
+   parameter                BITS = 16;
+   parameter                WORD_DEPTH = 64;
+   parameter                ADDR_WIDTH = 6;
    parameter                WORDX = {BITS{1'bx}};
    parameter                WORD1 = {BITS{1'b1}};
    parameter                ADDRX = {ADDR_WIDTH{1'bx}};
    parameter                ADDR1 = {ADDR_WIDTH{1'b1}};
    parameter                WEN_WIDTH = 1;
-   parameter                WP_SIZE    = 64 ;
+   parameter                WP_SIZE    = 16 ;
    parameter                RCOLS = 0;
    parameter                MASKX = {WEN_WIDTH{1'bx}};
    parameter                MASK1 = {WEN_WIDTH{1'b1}};
@@ -79,12 +79,12 @@
    parameter                RCA_WIDTH = 1;
    parameter                RED_COLUMNS = 2;
 	
-   output [63:0]            Q;
+   output [15:0]            Q;
    input                    CLK;
    input                    CEN;
    input                    WEN;
-   input [6:0]              A;
-   input [63:0]             D;
+   input [5:0]              A;
+   input [15:0]             D;
 
    reg [BITS+RED_COLUMNS-1:0]             mem [0:WORD_DEPTH-1];
    reg [BITS+RED_COLUMNS-1:0]             rows [(MUX*4)-1:0];   // added 2 bits for column redundancy
@@ -92,7 +92,6 @@
 
    reg                      NOT_CEN;
    reg                      NOT_WEN;
-   reg                      NOT_A6;
    reg                      NOT_A5;
    reg                      NOT_A4;
    reg                      NOT_A3;
@@ -100,54 +99,6 @@
    reg                      NOT_A1;
    reg                      NOT_A0;
    reg [ADDR_WIDTH-1:0]     NOT_A;
-   reg                      NOT_D63;
-   reg                      NOT_D62;
-   reg                      NOT_D61;
-   reg                      NOT_D60;
-   reg                      NOT_D59;
-   reg                      NOT_D58;
-   reg                      NOT_D57;
-   reg                      NOT_D56;
-   reg                      NOT_D55;
-   reg                      NOT_D54;
-   reg                      NOT_D53;
-   reg                      NOT_D52;
-   reg                      NOT_D51;
-   reg                      NOT_D50;
-   reg                      NOT_D49;
-   reg                      NOT_D48;
-   reg                      NOT_D47;
-   reg                      NOT_D46;
-   reg                      NOT_D45;
-   reg                      NOT_D44;
-   reg                      NOT_D43;
-   reg                      NOT_D42;
-   reg                      NOT_D41;
-   reg                      NOT_D40;
-   reg                      NOT_D39;
-   reg                      NOT_D38;
-   reg                      NOT_D37;
-   reg                      NOT_D36;
-   reg                      NOT_D35;
-   reg                      NOT_D34;
-   reg                      NOT_D33;
-   reg                      NOT_D32;
-   reg                      NOT_D31;
-   reg                      NOT_D30;
-   reg                      NOT_D29;
-   reg                      NOT_D28;
-   reg                      NOT_D27;
-   reg                      NOT_D26;
-   reg                      NOT_D25;
-   reg                      NOT_D24;
-   reg                      NOT_D23;
-   reg                      NOT_D22;
-   reg                      NOT_D21;
-   reg                      NOT_D20;
-   reg                      NOT_D19;
-   reg                      NOT_D18;
-   reg                      NOT_D17;
-   reg                      NOT_D16;
    reg                      NOT_D15;
    reg                      NOT_D14;
    reg                      NOT_D13;
@@ -208,7 +159,6 @@
    task update_notifier_buses;
    begin
       NOT_A = {
-               NOT_A6,
                NOT_A5,
                NOT_A4,
                NOT_A3,
@@ -216,54 +166,6 @@
                NOT_A1,
                NOT_A0};
       NOT_D = {
-               NOT_D63,
-               NOT_D62,
-               NOT_D61,
-               NOT_D60,
-               NOT_D59,
-               NOT_D58,
-               NOT_D57,
-               NOT_D56,
-               NOT_D55,
-               NOT_D54,
-               NOT_D53,
-               NOT_D52,
-               NOT_D51,
-               NOT_D50,
-               NOT_D49,
-               NOT_D48,
-               NOT_D47,
-               NOT_D46,
-               NOT_D45,
-               NOT_D44,
-               NOT_D43,
-               NOT_D42,
-               NOT_D41,
-               NOT_D40,
-               NOT_D39,
-               NOT_D38,
-               NOT_D37,
-               NOT_D36,
-               NOT_D35,
-               NOT_D34,
-               NOT_D33,
-               NOT_D32,
-               NOT_D31,
-               NOT_D30,
-               NOT_D29,
-               NOT_D28,
-               NOT_D27,
-               NOT_D26,
-               NOT_D25,
-               NOT_D24,
-               NOT_D23,
-               NOT_D22,
-               NOT_D21,
-               NOT_D20,
-               NOT_D19,
-               NOT_D18,
-               NOT_D17,
-               NOT_D16,
                NOT_D15,
                NOT_D14,
                NOT_D13,
@@ -1131,54 +1033,6 @@
       end
    endfunction
 
-   buf (Q[63], _Q[63]);
-   buf (Q[62], _Q[62]);
-   buf (Q[61], _Q[61]);
-   buf (Q[60], _Q[60]);
-   buf (Q[59], _Q[59]);
-   buf (Q[58], _Q[58]);
-   buf (Q[57], _Q[57]);
-   buf (Q[56], _Q[56]);
-   buf (Q[55], _Q[55]);
-   buf (Q[54], _Q[54]);
-   buf (Q[53], _Q[53]);
-   buf (Q[52], _Q[52]);
-   buf (Q[51], _Q[51]);
-   buf (Q[50], _Q[50]);
-   buf (Q[49], _Q[49]);
-   buf (Q[48], _Q[48]);
-   buf (Q[47], _Q[47]);
-   buf (Q[46], _Q[46]);
-   buf (Q[45], _Q[45]);
-   buf (Q[44], _Q[44]);
-   buf (Q[43], _Q[43]);
-   buf (Q[42], _Q[42]);
-   buf (Q[41], _Q[41]);
-   buf (Q[40], _Q[40]);
-   buf (Q[39], _Q[39]);
-   buf (Q[38], _Q[38]);
-   buf (Q[37], _Q[37]);
-   buf (Q[36], _Q[36]);
-   buf (Q[35], _Q[35]);
-   buf (Q[34], _Q[34]);
-   buf (Q[33], _Q[33]);
-   buf (Q[32], _Q[32]);
-   buf (Q[31], _Q[31]);
-   buf (Q[30], _Q[30]);
-   buf (Q[29], _Q[29]);
-   buf (Q[28], _Q[28]);
-   buf (Q[27], _Q[27]);
-   buf (Q[26], _Q[26]);
-   buf (Q[25], _Q[25]);
-   buf (Q[24], _Q[24]);
-   buf (Q[23], _Q[23]);
-   buf (Q[22], _Q[22]);
-   buf (Q[21], _Q[21]);
-   buf (Q[20], _Q[20]);
-   buf (Q[19], _Q[19]);
-   buf (Q[18], _Q[18]);
-   buf (Q[17], _Q[17]);
-   buf (Q[16], _Q[16]);
    buf (Q[15], _Q[15]);
    buf (Q[14], _Q[14]);
    buf (Q[13], _Q[13]);
@@ -1198,61 +1052,12 @@
    buf (_CLK, CLK);
    buf (_CEN, CEN);
    buf (_WEN, WEN);
-   buf (_A[6], A[6]);
    buf (_A[5], A[5]);
    buf (_A[4], A[4]);
    buf (_A[3], A[3]);
    buf (_A[2], A[2]);
    buf (_A[1], A[1]);
    buf (_A[0], A[0]);
-   buf (_D[63], D[63]);
-   buf (_D[62], D[62]);
-   buf (_D[61], D[61]);
-   buf (_D[60], D[60]);
-   buf (_D[59], D[59]);
-   buf (_D[58], D[58]);
-   buf (_D[57], D[57]);
-   buf (_D[56], D[56]);
-   buf (_D[55], D[55]);
-   buf (_D[54], D[54]);
-   buf (_D[53], D[53]);
-   buf (_D[52], D[52]);
-   buf (_D[51], D[51]);
-   buf (_D[50], D[50]);
-   buf (_D[49], D[49]);
-   buf (_D[48], D[48]);
-   buf (_D[47], D[47]);
-   buf (_D[46], D[46]);
-   buf (_D[45], D[45]);
-   buf (_D[44], D[44]);
-   buf (_D[43], D[43]);
-   buf (_D[42], D[42]);
-   buf (_D[41], D[41]);
-   buf (_D[40], D[40]);
-   buf (_D[39], D[39]);
-   buf (_D[38], D[38]);
-   buf (_D[37], D[37]);
-   buf (_D[36], D[36]);
-   buf (_D[35], D[35]);
-   buf (_D[34], D[34]);
-   buf (_D[33], D[33]);
-   buf (_D[32], D[32]);
-   buf (_D[31], D[31]);
-   buf (_D[30], D[30]);
-   buf (_D[29], D[29]);
-   buf (_D[28], D[28]);
-   buf (_D[27], D[27]);
-   buf (_D[26], D[26]);
-   buf (_D[25], D[25]);
-   buf (_D[24], D[24]);
-   buf (_D[23], D[23]);
-   buf (_D[22], D[22]);
-   buf (_D[21], D[21]);
-   buf (_D[20], D[20]);
-   buf (_D[19], D[19]);
-   buf (_D[18], D[18]);
-   buf (_D[17], D[17]);
-   buf (_D[16], D[16]);
    buf (_D[15], D[15]);
    buf (_D[14], D[14]);
    buf (_D[13], D[13]);
@@ -1279,61 +1084,12 @@
    always @(
 	    NOT_CEN or
 	    NOT_WEN or
-	    NOT_A6 or
 	    NOT_A5 or
 	    NOT_A4 or
 	    NOT_A3 or
 	    NOT_A2 or
 	    NOT_A1 or
 	    NOT_A0 or
-	    NOT_D63 or
-	    NOT_D62 or
-	    NOT_D61 or
-	    NOT_D60 or
-	    NOT_D59 or
-	    NOT_D58 or
-	    NOT_D57 or
-	    NOT_D56 or
-	    NOT_D55 or
-	    NOT_D54 or
-	    NOT_D53 or
-	    NOT_D52 or
-	    NOT_D51 or
-	    NOT_D50 or
-	    NOT_D49 or
-	    NOT_D48 or
-	    NOT_D47 or
-	    NOT_D46 or
-	    NOT_D45 or
-	    NOT_D44 or
-	    NOT_D43 or
-	    NOT_D42 or
-	    NOT_D41 or
-	    NOT_D40 or
-	    NOT_D39 or
-	    NOT_D38 or
-	    NOT_D37 or
-	    NOT_D36 or
-	    NOT_D35 or
-	    NOT_D34 or
-	    NOT_D33 or
-	    NOT_D32 or
-	    NOT_D31 or
-	    NOT_D30 or
-	    NOT_D29 or
-	    NOT_D28 or
-	    NOT_D27 or
-	    NOT_D26 or
-	    NOT_D25 or
-	    NOT_D24 or
-	    NOT_D23 or
-	    NOT_D22 or
-	    NOT_D21 or
-	    NOT_D20 or
-	    NOT_D19 or
-	    NOT_D18 or
-	    NOT_D17 or
-	    NOT_D16 or
 	    NOT_D15 or
 	    NOT_D14 or
 	    NOT_D13 or
@@ -1408,8 +1164,6 @@
       $setuphold(posedge CLK &&& CEN_flag, negedge CEN, 1.000, 0.500, NOT_CEN);
       $setuphold(posedge CLK &&& flag, posedge WEN, 1.000, 0.500, NOT_WEN);
       $setuphold(posedge CLK &&& flag, negedge WEN, 1.000, 0.500, NOT_WEN);
-      $setuphold(posedge CLK &&& flag, posedge A[6], 1.000, 0.500, NOT_A6);
-      $setuphold(posedge CLK &&& flag, negedge A[6], 1.000, 0.500, NOT_A6);
       $setuphold(posedge CLK &&& flag, posedge A[5], 1.000, 0.500, NOT_A5);
       $setuphold(posedge CLK &&& flag, negedge A[5], 1.000, 0.500, NOT_A5);
       $setuphold(posedge CLK &&& flag, posedge A[4], 1.000, 0.500, NOT_A4);
@@ -1422,102 +1176,6 @@
       $setuphold(posedge CLK &&& flag, negedge A[1], 1.000, 0.500, NOT_A1);
       $setuphold(posedge CLK &&& flag, posedge A[0], 1.000, 0.500, NOT_A0);
       $setuphold(posedge CLK &&& flag, negedge A[0], 1.000, 0.500, NOT_A0);
-      $setuphold(posedge CLK &&& D_flag, posedge D[63], 1.000, 0.500, NOT_D63);
-      $setuphold(posedge CLK &&& D_flag, negedge D[63], 1.000, 0.500, NOT_D63);
-      $setuphold(posedge CLK &&& D_flag, posedge D[62], 1.000, 0.500, NOT_D62);
-      $setuphold(posedge CLK &&& D_flag, negedge D[62], 1.000, 0.500, NOT_D62);
-      $setuphold(posedge CLK &&& D_flag, posedge D[61], 1.000, 0.500, NOT_D61);
-      $setuphold(posedge CLK &&& D_flag, negedge D[61], 1.000, 0.500, NOT_D61);
-      $setuphold(posedge CLK &&& D_flag, posedge D[60], 1.000, 0.500, NOT_D60);
-      $setuphold(posedge CLK &&& D_flag, negedge D[60], 1.000, 0.500, NOT_D60);
-      $setuphold(posedge CLK &&& D_flag, posedge D[59], 1.000, 0.500, NOT_D59);
-      $setuphold(posedge CLK &&& D_flag, negedge D[59], 1.000, 0.500, NOT_D59);
-      $setuphold(posedge CLK &&& D_flag, posedge D[58], 1.000, 0.500, NOT_D58);
-      $setuphold(posedge CLK &&& D_flag, negedge D[58], 1.000, 0.500, NOT_D58);
-      $setuphold(posedge CLK &&& D_flag, posedge D[57], 1.000, 0.500, NOT_D57);
-      $setuphold(posedge CLK &&& D_flag, negedge D[57], 1.000, 0.500, NOT_D57);
-      $setuphold(posedge CLK &&& D_flag, posedge D[56], 1.000, 0.500, NOT_D56);
-      $setuphold(posedge CLK &&& D_flag, negedge D[56], 1.000, 0.500, NOT_D56);
-      $setuphold(posedge CLK &&& D_flag, posedge D[55], 1.000, 0.500, NOT_D55);
-      $setuphold(posedge CLK &&& D_flag, negedge D[55], 1.000, 0.500, NOT_D55);
-      $setuphold(posedge CLK &&& D_flag, posedge D[54], 1.000, 0.500, NOT_D54);
-      $setuphold(posedge CLK &&& D_flag, negedge D[54], 1.000, 0.500, NOT_D54);
-      $setuphold(posedge CLK &&& D_flag, posedge D[53], 1.000, 0.500, NOT_D53);
-      $setuphold(posedge CLK &&& D_flag, negedge D[53], 1.000, 0.500, NOT_D53);
-      $setuphold(posedge CLK &&& D_flag, posedge D[52], 1.000, 0.500, NOT_D52);
-      $setuphold(posedge CLK &&& D_flag, negedge D[52], 1.000, 0.500, NOT_D52);
-      $setuphold(posedge CLK &&& D_flag, posedge D[51], 1.000, 0.500, NOT_D51);
-      $setuphold(posedge CLK &&& D_flag, negedge D[51], 1.000, 0.500, NOT_D51);
-      $setuphold(posedge CLK &&& D_flag, posedge D[50], 1.000, 0.500, NOT_D50);
-      $setuphold(posedge CLK &&& D_flag, negedge D[50], 1.000, 0.500, NOT_D50);
-      $setuphold(posedge CLK &&& D_flag, posedge D[49], 1.000, 0.500, NOT_D49);
-      $setuphold(posedge CLK &&& D_flag, negedge D[49], 1.000, 0.500, NOT_D49);
-      $setuphold(posedge CLK &&& D_flag, posedge D[48], 1.000, 0.500, NOT_D48);
-      $setuphold(posedge CLK &&& D_flag, negedge D[48], 1.000, 0.500, NOT_D48);
-      $setuphold(posedge CLK &&& D_flag, posedge D[47], 1.000, 0.500, NOT_D47);
-      $setuphold(posedge CLK &&& D_flag, negedge D[47], 1.000, 0.500, NOT_D47);
-      $setuphold(posedge CLK &&& D_flag, posedge D[46], 1.000, 0.500, NOT_D46);
-      $setuphold(posedge CLK &&& D_flag, negedge D[46], 1.000, 0.500, NOT_D46);
-      $setuphold(posedge CLK &&& D_flag, posedge D[45], 1.000, 0.500, NOT_D45);
-      $setuphold(posedge CLK &&& D_flag, negedge D[45], 1.000, 0.500, NOT_D45);
-      $setuphold(posedge CLK &&& D_flag, posedge D[44], 1.000, 0.500, NOT_D44);
-      $setuphold(posedge CLK &&& D_flag, negedge D[44], 1.000, 0.500, NOT_D44);
-      $setuphold(posedge CLK &&& D_flag, posedge D[43], 1.000, 0.500, NOT_D43);
-      $setuphold(posedge CLK &&& D_flag, negedge D[43], 1.000, 0.500, NOT_D43);
-      $setuphold(posedge CLK &&& D_flag, posedge D[42], 1.000, 0.500, NOT_D42);
-      $setuphold(posedge CLK &&& D_flag, negedge D[42], 1.000, 0.500, NOT_D42);
-      $setuphold(posedge CLK &&& D_flag, posedge D[41], 1.000, 0.500, NOT_D41);
-      $setuphold(posedge CLK &&& D_flag, negedge D[41], 1.000, 0.500, NOT_D41);
-      $setuphold(posedge CLK &&& D_flag, posedge D[40], 1.000, 0.500, NOT_D40);
-      $setuphold(posedge CLK &&& D_flag, negedge D[40], 1.000, 0.500, NOT_D40);
-      $setuphold(posedge CLK &&& D_flag, posedge D[39], 1.000, 0.500, NOT_D39);
-      $setuphold(posedge CLK &&& D_flag, negedge D[39], 1.000, 0.500, NOT_D39);
-      $setuphold(posedge CLK &&& D_flag, posedge D[38], 1.000, 0.500, NOT_D38);
-      $setuphold(posedge CLK &&& D_flag, negedge D[38], 1.000, 0.500, NOT_D38);
-      $setuphold(posedge CLK &&& D_flag, posedge D[37], 1.000, 0.500, NOT_D37);
-      $setuphold(posedge CLK &&& D_flag, negedge D[37], 1.000, 0.500, NOT_D37);
-      $setuphold(posedge CLK &&& D_flag, posedge D[36], 1.000, 0.500, NOT_D36);
-      $setuphold(posedge CLK &&& D_flag, negedge D[36], 1.000, 0.500, NOT_D36);
-      $setuphold(posedge CLK &&& D_flag, posedge D[35], 1.000, 0.500, NOT_D35);
-      $setuphold(posedge CLK &&& D_flag, negedge D[35], 1.000, 0.500, NOT_D35);
-      $setuphold(posedge CLK &&& D_flag, posedge D[34], 1.000, 0.500, NOT_D34);
-      $setuphold(posedge CLK &&& D_flag, negedge D[34], 1.000, 0.500, NOT_D34);
-      $setuphold(posedge CLK &&& D_flag, posedge D[33], 1.000, 0.500, NOT_D33);
-      $setuphold(posedge CLK &&& D_flag, negedge D[33], 1.000, 0.500, NOT_D33);
-      $setuphold(posedge CLK &&& D_flag, posedge D[32], 1.000, 0.500, NOT_D32);
-      $setuphold(posedge CLK &&& D_flag, negedge D[32], 1.000, 0.500, NOT_D32);
-      $setuphold(posedge CLK &&& D_flag, posedge D[31], 1.000, 0.500, NOT_D31);
-      $setuphold(posedge CLK &&& D_flag, negedge D[31], 1.000, 0.500, NOT_D31);
-      $setuphold(posedge CLK &&& D_flag, posedge D[30], 1.000, 0.500, NOT_D30);
-      $setuphold(posedge CLK &&& D_flag, negedge D[30], 1.000, 0.500, NOT_D30);
-      $setuphold(posedge CLK &&& D_flag, posedge D[29], 1.000, 0.500, NOT_D29);
-      $setuphold(posedge CLK &&& D_flag, negedge D[29], 1.000, 0.500, NOT_D29);
-      $setuphold(posedge CLK &&& D_flag, posedge D[28], 1.000, 0.500, NOT_D28);
-      $setuphold(posedge CLK &&& D_flag, negedge D[28], 1.000, 0.500, NOT_D28);
-      $setuphold(posedge CLK &&& D_flag, posedge D[27], 1.000, 0.500, NOT_D27);
-      $setuphold(posedge CLK &&& D_flag, negedge D[27], 1.000, 0.500, NOT_D27);
-      $setuphold(posedge CLK &&& D_flag, posedge D[26], 1.000, 0.500, NOT_D26);
-      $setuphold(posedge CLK &&& D_flag, negedge D[26], 1.000, 0.500, NOT_D26);
-      $setuphold(posedge CLK &&& D_flag, posedge D[25], 1.000, 0.500, NOT_D25);
-      $setuphold(posedge CLK &&& D_flag, negedge D[25], 1.000, 0.500, NOT_D25);
-      $setuphold(posedge CLK &&& D_flag, posedge D[24], 1.000, 0.500, NOT_D24);
-      $setuphold(posedge CLK &&& D_flag, negedge D[24], 1.000, 0.500, NOT_D24);
-      $setuphold(posedge CLK &&& D_flag, posedge D[23], 1.000, 0.500, NOT_D23);
-      $setuphold(posedge CLK &&& D_flag, negedge D[23], 1.000, 0.500, NOT_D23);
-      $setuphold(posedge CLK &&& D_flag, posedge D[22], 1.000, 0.500, NOT_D22);
-      $setuphold(posedge CLK &&& D_flag, negedge D[22], 1.000, 0.500, NOT_D22);
-      $setuphold(posedge CLK &&& D_flag, posedge D[21], 1.000, 0.500, NOT_D21);
-      $setuphold(posedge CLK &&& D_flag, negedge D[21], 1.000, 0.500, NOT_D21);
-      $setuphold(posedge CLK &&& D_flag, posedge D[20], 1.000, 0.500, NOT_D20);
-      $setuphold(posedge CLK &&& D_flag, negedge D[20], 1.000, 0.500, NOT_D20);
-      $setuphold(posedge CLK &&& D_flag, posedge D[19], 1.000, 0.500, NOT_D19);
-      $setuphold(posedge CLK &&& D_flag, negedge D[19], 1.000, 0.500, NOT_D19);
-      $setuphold(posedge CLK &&& D_flag, posedge D[18], 1.000, 0.500, NOT_D18);
-      $setuphold(posedge CLK &&& D_flag, negedge D[18], 1.000, 0.500, NOT_D18);
-      $setuphold(posedge CLK &&& D_flag, posedge D[17], 1.000, 0.500, NOT_D17);
-      $setuphold(posedge CLK &&& D_flag, negedge D[17], 1.000, 0.500, NOT_D17);
-      $setuphold(posedge CLK &&& D_flag, posedge D[16], 1.000, 0.500, NOT_D16);
-      $setuphold(posedge CLK &&& D_flag, negedge D[16], 1.000, 0.500, NOT_D16);
       $setuphold(posedge CLK &&& D_flag, posedge D[15], 1.000, 0.500, NOT_D15);
       $setuphold(posedge CLK &&& D_flag, negedge D[15], 1.000, 0.500, NOT_D15);
       $setuphold(posedge CLK &&& D_flag, posedge D[14], 1.000, 0.500, NOT_D14);
@@ -1556,54 +1214,6 @@
       $width(negedge CLK, 1.000, 0, NOT_CLK_MINL);
       $period(posedge CLK, 3.000, NOT_CLK_PER);
 
-      (CLK => Q[63])=(1.000, 1.000);
-      (CLK => Q[62])=(1.000, 1.000);
-      (CLK => Q[61])=(1.000, 1.000);
-      (CLK => Q[60])=(1.000, 1.000);
-      (CLK => Q[59])=(1.000, 1.000);
-      (CLK => Q[58])=(1.000, 1.000);
-      (CLK => Q[57])=(1.000, 1.000);
-      (CLK => Q[56])=(1.000, 1.000);
-      (CLK => Q[55])=(1.000, 1.000);
-      (CLK => Q[54])=(1.000, 1.000);
-      (CLK => Q[53])=(1.000, 1.000);
-      (CLK => Q[52])=(1.000, 1.000);
-      (CLK => Q[51])=(1.000, 1.000);
-      (CLK => Q[50])=(1.000, 1.000);
-      (CLK => Q[49])=(1.000, 1.000);
-      (CLK => Q[48])=(1.000, 1.000);
-      (CLK => Q[47])=(1.000, 1.000);
-      (CLK => Q[46])=(1.000, 1.000);
-      (CLK => Q[45])=(1.000, 1.000);
-      (CLK => Q[44])=(1.000, 1.000);
-      (CLK => Q[43])=(1.000, 1.000);
-      (CLK => Q[42])=(1.000, 1.000);
-      (CLK => Q[41])=(1.000, 1.000);
-      (CLK => Q[40])=(1.000, 1.000);
-      (CLK => Q[39])=(1.000, 1.000);
-      (CLK => Q[38])=(1.000, 1.000);
-      (CLK => Q[37])=(1.000, 1.000);
-      (CLK => Q[36])=(1.000, 1.000);
-      (CLK => Q[35])=(1.000, 1.000);
-      (CLK => Q[34])=(1.000, 1.000);
-      (CLK => Q[33])=(1.000, 1.000);
-      (CLK => Q[32])=(1.000, 1.000);
-      (CLK => Q[31])=(1.000, 1.000);
-      (CLK => Q[30])=(1.000, 1.000);
-      (CLK => Q[29])=(1.000, 1.000);
-      (CLK => Q[28])=(1.000, 1.000);
-      (CLK => Q[27])=(1.000, 1.000);
-      (CLK => Q[26])=(1.000, 1.000);
-      (CLK => Q[25])=(1.000, 1.000);
-      (CLK => Q[24])=(1.000, 1.000);
-      (CLK => Q[23])=(1.000, 1.000);
-      (CLK => Q[22])=(1.000, 1.000);
-      (CLK => Q[21])=(1.000, 1.000);
-      (CLK => Q[20])=(1.000, 1.000);
-      (CLK => Q[19])=(1.000, 1.000);
-      (CLK => Q[18])=(1.000, 1.000);
-      (CLK => Q[17])=(1.000, 1.000);
-      (CLK => Q[16])=(1.000, 1.000);
       (CLK => Q[15])=(1.000, 1.000);
       (CLK => Q[14])=(1.000, 1.000);
       (CLK => Q[13])=(1.000, 1.000);

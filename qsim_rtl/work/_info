@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/user/stud/fall23/ns3683/4823/ald-labs/qsim_rtl
 valu
 2/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v
-Z1 !s110 1732391002
+!s110 1732395548
 !i10b 1
 !s100 ^ieTJU3gHNz1Ol4F3Vho31
 I<CILUdPeQWKzaR:A@n7Yc2
@@ -21,20 +21,44 @@ w1732390216
 F/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v
 !i122 0
 L0 2 22
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-Z3 OP;L;2024.2;79
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 OP;L;2024.2;79
 r1
 !s85 0
 31
-!s108 1732391001.000000
+Z3 !s108 1732395548.000000
 !s107 /user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v|
 !s90 -reportprogress|300|+acc|-incr|/user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v|
 !i113 1
 Z4 o+acc
 Z5 tCvgOpt 0
+vRF1SHD
+2/user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v
+Z6 !s110 1732395549
+!i10b 1
+!s100 jW0^WWEW2VFJ]PNX?0?3@1
+Im9hf>l<5?k>G7UoF<gW6z2
+R0
+w1732395193
+8/user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v
+F/user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v
+!i122 2
+L0 53 1184
+R1
+R2
+r1
+!s85 0
+31
+!s108 1732395549.000000
+!s107 /user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v|
+!s90 -reportprogress|300|+acc|-incr|/user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v|
+!i113 1
+R4
+R5
+n@r@f1@s@h@d
 vtb_alu
 2alu_testb.v
-R1
+R6
 !i10b 1
 !s100 ci014am6]SOD3`3l<zmPG3
 I]:eM@@4n7M>8Wi[KfJIMl3
@@ -44,12 +68,12 @@ w1732390968
 Falu_testb.v
 !i122 1
 L0 9 60
+R1
 R2
-R3
 r1
 !s85 0
 31
-!s108 1732391002.000000
+R3
 !s107 alu_testb.v|
 !s90 -reportprogress|300|+acc|-incr|alu_testb.v|
 !i113 1

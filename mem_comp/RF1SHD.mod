@@ -15,17 +15,17 @@
  *           			IBM CMRF8SF-LPVT Process
  *      version:		2008Q3V1
  *      comment:		
- *      configuration:	 -instname RF1SHD -words 128 -bits 64 -frequency 1 -ring_width 2.0 -mux 2 -write_mask off -wp_size 8 -top_layer "m6-m8_m4" -power_type rings -horiz met3 -vert met2 -cust_comment "" -bus_notation on -left_bus_delim "[" -right_bus_delim "]" -pwr_gnd_rename "VDD:VDD,GND:VSS" -prefix "" -pin_space 0.0 -name_case upper -check_instname on -diodes on -inside_ring_type GND -drive 4 -asvm on -corners ff_1p32v_m55c,ff_1p65v_125c,tt_1p2v_25c,ss_1p08v_m55c
+ *      configuration:	 -instname RF1SHD -words 64 -bits 16 -frequency 1 -ring_width 2.0 -mux 2 -write_mask off -wp_size 8 -top_layer "m6-m8_m4" -power_type rings -horiz met3 -vert met2 -cust_comment "" -bus_notation on -left_bus_delim "[" -right_bus_delim "]" -pwr_gnd_rename "VDD:VDD,GND:VSS" -prefix "" -pin_space 0.0 -name_case upper -check_instname on -diodes on -inside_ring_type GND -drive 4 -asvm on -corners ff_1p32v_m55c,ff_1p65v_125c,tt_1p2v_25c,ss_1p08v_m55c
  *
  *      Synopsys model for Synchronous Single-Port Register File
  *
  *      Library Name:   aci
  *      Instance Name:  RF1SHD
- *      Words:          128
- *      Word Width:     64
+ *      Words:          64
+ *      Word Width:     16
  *      Mux:            2
  *
- *      Creation Date:  2024-11-23 20:01:20Z
+ *      Creation Date:  2024-11-23 20:53:22Z
  *      Version:        2008Q3V1
  *
  *      Verified With: Synopsys Primetime
@@ -55,12 +55,12 @@
 MODEL
 MODEL_VERSION "1.0";
 DESIGN "RF1SHD";
-INPUT A[6:0];
-INPUT D[63:0];
+INPUT A[5:0];
+INPUT D[15:0];
 INPUT WEN;
 INPUT CEN;
 INPUT CLK;
-OUTPUT Q[63:0];
+OUTPUT Q[15:0];
 MODE mem_mode_2_A =
                         ChipEnabled_A  COND(CEN==0),
                         DMYChipEnabled_A  COND(!(CEN==0));

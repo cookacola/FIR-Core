@@ -29,7 +29,7 @@
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
-Current time:       Sat Nov 23 15:14:06 2024
+Current time:       Sat Nov 23 15:56:15 2024
 Hostname:           cadpc14
 CPU Model:          11th Gen Intel(R) Core(TM) i9-11900 @ 2.50GHz
 CPU Details:        Cores = 16 : Sockets = 1 : Cache Size = 16384 KB : Freq = 3.70 GHz
@@ -38,10 +38,10 @@ RAM:                 62 GB (Free  30 GB)
 Swap:                31 GB (Free  31 GB)
 Work Filesystem:    /homes mounted to auto.homes
 Tmp Filesystem:     /tmp mounted to tmpfs
-Work Disk:          18974 GB (Free 6793 GB)
+Work Disk:          18974 GB (Free 6845 GB)
 Tmp Disk:            31 GB (Free  31 GB)
 
-CPU Load: 59%, Ram Free: 30 GB, Swap Free: 31 GB, Work Disk Free: 6793 GB, Tmp Disk Free: 31 GB
+CPU Load: 60%, Ram Free: 30 GB, Swap Free: 31 GB, Work Disk Free: 6845 GB, Tmp Disk Free: 31 GB
 enable_write_lib_mode
 Warning: This dc_shell session is for library operations only. You should not perform optimization on the design. Please exit when you are finished with the library operation. (UIL-93)
 1
@@ -71,6 +71,6 @@ quit
 Memory usage for this session 71 Mbytes.
 Memory usage for this session including child processes 71 Mbytes.
 CPU usage for this session 4 seconds ( 0.00 hours ).
-Elapsed time for this session 8 seconds ( 0.00 hours ).
+Elapsed time for this session 11 seconds ( 0.00 hours ).
 
 Thank you...
