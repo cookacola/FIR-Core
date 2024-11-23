@@ -1,0 +1,629 @@
+/*
+ *      CONFIDENTIAL  AND  PROPRIETARY SOFTWARE OF ARM Physical IP, INC.
+ *      
+ *      Copyright (c) 1993-2024  ARM Physical IP, Inc.  All  Rights Reserved.
+ *      
+ *      Use of this Software is subject to the terms and conditions  of the
+ *      applicable license agreement with ARM Physical IP, Inc.  In addition,
+ *      this Software is protected by patents, copyright law and international
+ *      treaties.
+ *      
+ *      The copyright notice(s) in this Software does not indicate actual or
+ *      intended publication of this Software.
+ *      
+ *      name:			High Speed/Density Single Port Register File Generator
+ *           			IBM CMRF8SF-LPVT Process
+ *      version:		2008Q3V1
+ *      comment:		
+ *      configuration:	 -instname RF1SHD -words 128 -bits 64 -frequency 1 -ring_width 2.0 -mux 2 -write_mask off -wp_size 8 -top_layer "m6-m8_m4" -power_type rings -horiz met3 -vert met2 -cust_comment "" -bus_notation on -left_bus_delim "[" -right_bus_delim "]" -pwr_gnd_rename "VDD:VDD,GND:VSS" -prefix "" -pin_space 0.0 -name_case upper -check_instname on -diodes on -inside_ring_type GND -drive 4 -asvm on -libname USERLIB -corners ff_1p32v_m55c,ff_1p65v_125c,tt_1p2v_25c,ss_1p08v_m55c
+ *
+ *      Synopsys model for Synchronous Single-Port Register File
+ *
+ *      Library Name:   USERLIB
+ *      Instance Name:  RF1SHD
+ *      Words:          128
+ *      Word Width:     64
+ *      Mux:            2
+ *      Corner:        ss_1p08v_m55c
+ *
+ *      Creation Date:  2024-11-23 20:01:15Z
+ *      Version:        2008Q3V1
+ *
+ *      Verified With: Synopsys Design Compiler
+ *
+ *      Modeling Assumptions: This library contains a black box description
+ *          for a memory element.  At the library level, a
+ *          default_max_transition constraint is set to the maximum
+ *          characterized input slew.  Each output has a max_capacitance
+ *          constraint set to the highest characterized output load.  These two
+ *          constraints force Design Compiler to synthesize circuits that
+ *          operate within the characterization space.  The user can tighten
+ *          these constraints, if desired.  When writing SDF from Design
+ *          Compiler, use the version 2.1 option.  This ensures the SDF will
+ *          annotate to simulation models provided with this generator.
+ *
+ *      Modeling Limitations: 
+ *          Due to limitations of the .lib format, some data reduction was
+ *          necessary.  When reducing data, minimum values were chosen for the
+ *          fast case corner and maximum values were used for the typical and
+ *          best case corners.  It is recommended that critical timing and
+ *          setup and hold times be checked at all corners.
+ *
+ *      Known Bugs: None.
+ *
+ *      Known Work Arounds: N/A
+ *
+ */
+
+library(USERLIB) {
+	delay_model		: table_lookup;
+	revision		: 1.1;	
+	date			: "2024-11-23 20:01:15Z";
+	comment			: "Confidential Information of ARM Physical IP, Inc.  Use subject to ARM Physical IP, Inc. license.  Copyright (c) 1993-2024 ARM Physical IP, Inc.";
+	time_unit		: "1ns";
+	voltage_unit		: "1V";
+	current_unit		: "1mA";
+	leakage_power_unit	: "1mW";
+	nom_process		: 1;
+	nom_temperature		: -55.000;
+	nom_voltage		: 1.080;
+	capacitive_load_unit	 (1,pf);
+
+	pulling_resistance_unit	        : "1kohm";
+
+	/* additional header data */
+	default_cell_leakage_power      : 0;
+	default_fanout_load		: 1;
+	default_inout_pin_cap		: 0.005;
+	default_input_pin_cap		: 0.005;
+	default_output_pin_cap		: 0.0;
+	default_max_transition		: 1.500;
+
+        /* default attributes */
+        default_leakage_power_density : 0.0;
+        slew_derate_from_library      : 1.000;
+        slew_lower_threshold_pct_fall : 10.000;
+        slew_upper_threshold_pct_fall : 90.000;
+        slew_lower_threshold_pct_rise : 10.000;
+        slew_upper_threshold_pct_rise : 90.000;
+        input_threshold_pct_fall      : 50.000;
+        input_threshold_pct_rise      : 50.000;
+        output_threshold_pct_fall     : 50.000;
+        output_threshold_pct_rise     : 50.000;
+
+ 	/* k-factors */
+ 	k_process_cell_fall             : 1;
+ 	k_process_cell_leakage_power    : 0;
+ 	k_process_cell_rise             : 1;
+ 	k_process_fall_transition       : 1;
+ 	k_process_hold_fall             : 1;
+ 	k_process_hold_rise             : 1;
+ 	k_process_internal_power        : 0;
+ 	k_process_min_pulse_width_high  : 1;
+ 	k_process_min_pulse_width_low   : 1;
+ 	k_process_pin_cap               : 0;
+ 	k_process_recovery_fall         : 1;
+ 	k_process_recovery_rise         : 1;
+ 	k_process_rise_transition       : 1;
+ 	k_process_setup_fall            : 1;
+ 	k_process_setup_rise            : 1;
+ 	k_process_wire_cap              : 0;
+ 	k_process_wire_res              : 0;
+	k_temp_cell_fall		: 0.000;
+	k_temp_cell_rise		: 0.000;
+	k_temp_hold_fall                : 0.000;
+	k_temp_hold_rise                : 0.000;
+	k_temp_min_pulse_width_high     : 0.000;
+	k_temp_min_pulse_width_low      : 0.000;
+	k_temp_min_period               : 0.000;
+	k_temp_rise_propagation         : 0.000;
+	k_temp_fall_propagation         : 0.000;
+	k_temp_rise_transition          : 0.0;
+	k_temp_fall_transition          : 0.0;
+	k_temp_recovery_fall            : 0.000;
+	k_temp_recovery_rise            : 0.000;
+	k_temp_setup_fall               : 0.000;
+	k_temp_setup_rise               : 0.000;
+	k_volt_cell_fall                : 0.000;
+	k_volt_cell_rise                : 0.000;
+	k_volt_hold_fall                : 0.000;
+	k_volt_hold_rise                : 0.000;
+	k_volt_min_pulse_width_high     : 0.000;
+	k_volt_min_pulse_width_low      : 0.000;
+	k_volt_min_period               : 0.000;
+	k_volt_rise_propagation         : 0.000;
+	k_volt_fall_propagation         : 0.000;
+	k_volt_rise_transition	        : 0.0;
+	k_volt_fall_transition	        : 0.0;
+	k_volt_recovery_fall            : 0.000;
+	k_volt_recovery_rise            : 0.000;
+	k_volt_setup_fall               : 0.000;
+	k_volt_setup_rise               : 0.000;
+
+
+        operating_conditions(ss_1p08v_m55c) {
+		process	 : 1;
+		temperature	 : -55.000;
+		voltage	 : 1.080;
+		tree_type	 : balanced_tree;
+	}
+        default_operating_conditions : ss_1p08v_m55c;
+	wire_load("sample") {
+		resistance	 : 1.6e-05;
+		capacitance	 : 0.0002;
+		area	 : 1.7;
+  		slope	 : 500;
+		fanout_length	 (1,500);
+	}
+        lu_table_template(RF1SHD_bist_mux_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(RF1SHD_mux_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(RF1SHD_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	lu_table_template(RF1SHD_bist_mux_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	lu_table_template(RF1SHD_mem_out_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	lu_table_template(RF1SHD_clk_setup_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	lu_table_template(RF1SHD_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        power_lut_template(RF1SHD_energy_template_clkslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        power_lut_template(RF1SHD_energy_template_sigslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        power_lut_template(RF1SHD_energy_template_load) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        power_lut_template(RF1SHD_energy_template_clkslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+        power_lut_template(RF1SHD_energy_template_sigslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+	library_features(report_delay_calculation);
+	type (RF1SHD_DATA) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 64;
+		bit_from : 63;
+		bit_to : 0 ;
+		downto : true ;
+	}
+	type (RF1SHD_UPM) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 3;
+		bit_from : 2;
+		bit_to : 0 ;
+		downto : true ;
+	}
+	type (RF1SHD_ADDRESS) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 7;
+		bit_from : 6;
+		bit_to : 0 ;
+		downto : true ;
+	}
+cell(RF1SHD) {
+	area		 : 42499.458;
+	dont_use	 : TRUE;
+	dont_touch	 : TRUE;
+        interface_timing : TRUE;
+	memory() {
+		type : ram;
+		address_width : 7;
+		word_width : 64;
+	}
+        bus(Q)   {
+                bus_type : RF1SHD_DATA;
+		direction : output;
+		max_capacitance : 0.650;
+                memory_read() {
+			address : A;
+		}
+                timing() {
+                        related_pin :   "CLK" ;
+                        timing_type : rising_edge ;
+                        timing_sense : non_unate;
+                        cell_rise(RF1SHD_mem_out_delay_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.000, 0.020, 0.040, 0.090, 0.220, 0.430, 0.650");
+                        values ( \
+                          "7.950, 7.999, 8.048, 8.172, 8.494, 9.013, 9.557", \
+                          "7.987, 8.037, 8.086, 8.210, 8.531, 9.051, 9.595", \
+                          "8.034, 8.084, 8.133, 8.257, 8.578, 9.098, 9.642", \
+                          "8.128, 8.177, 8.227, 8.351, 8.672, 9.192, 9.736", \
+                          "8.410, 8.459, 8.509, 8.632, 8.954, 9.473, 10.018", \
+                          "8.880, 8.929, 8.978, 9.102, 9.424, 9.943, 10.487", \
+                          "9.349, 9.399, 9.448, 9.572, 9.893, 10.413, 10.957" \
+                        )
+                        }
+                        rise_transition(RF1SHD_mem_out_slew_template) {
+                        index_1 ("0.000, 0.020, 0.040, 0.090, 0.220, 0.430, 0.650");
+                        values ("0.127, 0.237, 0.348, 0.625, 1.345, 2.507, 3.725")
+                        }
+                        cell_fall(RF1SHD_mem_out_delay_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.000, 0.020, 0.040, 0.090, 0.220, 0.430, 0.650");
+                        values ( \
+                          "8.170, 8.237, 8.303, 8.470, 8.903, 9.603, 10.336", \
+                          "8.208, 8.274, 8.341, 8.508, 8.941, 9.640, 10.373", \
+                          "8.255, 8.321, 8.388, 8.555, 8.988, 9.687, 10.420", \
+                          "8.349, 8.415, 8.482, 8.649, 9.082, 9.781, 10.514", \
+                          "8.630, 8.697, 8.764, 8.930, 9.363, 10.063, 10.796", \
+                          "9.100, 9.167, 9.233, 9.400, 9.833, 10.533, 11.266", \
+                          "9.570, 9.636, 9.703, 9.870, 10.303, 11.002, 11.735" \
+                        )
+                        }
+                        fall_transition(RF1SHD_mem_out_slew_template) {
+                        index_1 ("0.000, 0.020, 0.040, 0.090, 0.220, 0.430, 0.650");
+                        values ("0.140, 0.295, 0.451, 0.840, 1.850, 3.482, 5.193")
+                        }
+                }
+        }
+        pin(CLK)   {
+		direction : input;
+		capacitance : 0.058;
+                clock : true;
+                max_transition : 1.500;
+                min_pulse_width_high : 0.712 ;
+                min_pulse_width_low  : 1.654 ;
+                min_period           : 9.750 ;
+
+
+                internal_power(){
+                        when : "(!CEN & ! \
+                                 (WEN) \
+                                ) \
+                                 ";
+                        rise_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("31.428, 31.428")
+                        }
+                        fall_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+                internal_power(){
+                        when : "(!CEN & \
+                                 (WEN) \
+                                ) \
+                                 ";
+                        rise_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("29.290, 29.290")
+                        }
+                        fall_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+         internal_power(){
+                 when : "(CEN)";
+                        rise_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.114, 0.114")
+                        }
+                        fall_power(RF1SHD_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+        }
+
+        pin(CEN)   {
+                direction : input;
+                capacitance : 0.008;
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : setup_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.238, 1.277, 1.325, 1.421, 1.710, 2.192, 2.674", \
+                          "1.200, 1.239, 1.287, 1.384, 1.673, 2.155, 2.637", \
+                          "1.153, 1.192, 1.240, 1.337, 1.626, 2.108, 2.590", \
+                          "1.060, 1.098, 1.146, 1.243, 1.532, 2.014, 2.496", \
+                          "0.778, 0.816, 0.864, 0.961, 1.250, 1.732, 2.214", \
+                          "0.308, 0.347, 0.395, 0.491, 0.780, 1.262, 1.744", \
+                          "-0.162, -0.123, -0.075, 0.021, 0.311, 0.793, 1.274" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.872, 1.911, 1.960, 2.057, 2.348, 2.834, 3.320", \
+                          "1.835, 1.873, 1.922, 2.019, 2.311, 2.797, 3.283", \
+                          "1.788, 1.826, 1.875, 1.972, 2.264, 2.750, 3.236", \
+                          "1.694, 1.732, 1.781, 1.878, 2.170, 2.656, 3.142", \
+                          "1.412, 1.451, 1.499, 1.596, 1.888, 2.374, 2.860", \
+                          "0.942, 0.981, 1.030, 1.127, 1.418, 1.904, 2.390", \
+                          "0.472, 0.511, 0.560, 0.657, 0.949, 1.435, 1.920" \
+                        )
+                        }
+                } 
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : hold_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.337, 0.299, 0.251, 0.154, 0.000, 0.000, 0.000" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.350, 0.311, 0.263, 0.166, 0.000, 0.000, 0.000" \
+                        )
+                        }
+               }
+        }
+        pin(WEN){
+                direction : input;
+                capacitance : 0.018;
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : setup_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.055, 1.094, 1.143, 1.242, 1.536, 2.028, 2.519", \
+                          "1.017, 1.057, 1.106, 1.204, 1.499, 1.990, 2.481", \
+                          "0.970, 1.010, 1.059, 1.157, 1.452, 1.943, 2.434", \
+                          "0.877, 0.916, 0.965, 1.063, 1.358, 1.849, 2.340", \
+                          "0.595, 0.634, 0.683, 0.781, 1.076, 1.567, 2.058", \
+                          "0.125, 0.164, 0.213, 0.312, 0.606, 1.098, 1.589", \
+                          "-0.345, -0.305, -0.256, -0.158, 0.137, 0.628, 1.119" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.480, 1.516, 1.561, 1.652, 1.923, 2.375, 2.827", \
+                          "1.442, 1.479, 1.524, 1.614, 1.885, 2.337, 2.789", \
+                          "1.396, 1.432, 1.477, 1.567, 1.838, 2.290, 2.742", \
+                          "1.302, 1.338, 1.383, 1.473, 1.744, 2.196, 2.648", \
+                          "1.020, 1.056, 1.101, 1.191, 1.463, 1.914, 2.366", \
+                          "0.550, 0.586, 0.631, 0.722, 0.993, 1.445, 1.897", \
+                          "0.080, 0.117, 0.162, 0.252, 0.523, 0.975, 1.427" \
+                        )
+                        }
+                } 
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : hold_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.209, 0.170, 0.121, 0.023, 0.000, 0.000, 0.000", \
+                          "0.679, 0.640, 0.591, 0.492, 0.198, 0.000, 0.000", \
+                          "1.149, 1.109, 1.060, 0.962, 0.667, 0.176, 0.000" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.196, 0.160, 0.114, 0.024, 0.000, 0.000, 0.000", \
+                          "0.665, 0.629, 0.584, 0.494, 0.223, 0.000, 0.000", \
+                          "1.135, 1.099, 1.054, 0.963, 0.692, 0.240, 0.000" \
+                        )
+                        }
+               }
+        }
+        bus(A)   {
+                bus_type : RF1SHD_ADDRESS;
+                direction : input;
+                capacitance : 0.013;
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : setup_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "2.051, 2.090, 2.140, 2.238, 2.535, 3.029, 3.524", \
+                          "2.013, 2.053, 2.102, 2.201, 2.497, 2.992, 3.486", \
+                          "1.966, 2.006, 2.055, 2.154, 2.450, 2.945, 3.439", \
+                          "1.872, 1.912, 1.961, 2.060, 2.356, 2.851, 3.345", \
+                          "1.590, 1.630, 1.679, 1.778, 2.075, 2.569, 3.063", \
+                          "1.121, 1.160, 1.210, 1.308, 1.605, 2.099, 2.594", \
+                          "0.651, 0.690, 0.740, 0.839, 1.135, 1.630, 2.124" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.000, 1.038, 1.086, 1.181, 1.468, 1.946, 2.423", \
+                          "0.962, 1.001, 1.048, 1.144, 1.430, 1.908, 2.386", \
+                          "0.915, 0.954, 1.001, 1.097, 1.383, 1.861, 2.339", \
+                          "0.822, 0.860, 0.907, 1.003, 1.290, 1.767, 2.245", \
+                          "0.540, 0.578, 0.626, 0.721, 1.008, 1.485, 1.963", \
+                          "0.070, 0.108, 0.156, 0.251, 0.538, 1.016, 1.493", \
+                          "-0.400, -0.361, -0.314, -0.218, 0.068, 0.546, 1.023" \
+                        )
+                        }
+                } 
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : hold_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.006, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.053, 0.014, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.147, 0.108, 0.058, 0.000, 0.000, 0.000, 0.000", \
+                          "0.429, 0.390, 0.340, 0.241, 0.000, 0.000, 0.000", \
+                          "0.899, 0.859, 0.810, 0.711, 0.414, 0.000, 0.000", \
+                          "1.368, 1.329, 1.279, 1.181, 0.884, 0.390, 0.000" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.073, 0.035, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.111, 0.073, 0.025, 0.000, 0.000, 0.000, 0.000", \
+                          "0.158, 0.120, 0.072, 0.000, 0.000, 0.000, 0.000", \
+                          "0.252, 0.213, 0.166, 0.070, 0.000, 0.000, 0.000", \
+                          "0.533, 0.495, 0.448, 0.352, 0.065, 0.000, 0.000", \
+                          "1.003, 0.965, 0.917, 0.822, 0.535, 0.058, 0.000", \
+                          "1.473, 1.435, 1.387, 1.291, 1.005, 0.527, 0.050" \
+                        )
+                        }
+               }
+                internal_power(){
+                        when : "CEN";
+                        rise_power(RF1SHD_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.185, 0.185")
+                        }
+                        fall_power(RF1SHD_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.185, 0.185")
+                        }
+                }
+        }
+        bus(D)   {
+                bus_type : RF1SHD_DATA;
+                memory_write() {
+                        address : A;
+                        clocked_on : "CLK";
+                }
+                direction : input;
+                capacitance : 0.003;
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : setup_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.764, 0.804, 0.853, 0.951, 1.247, 1.739, 2.232", \
+                          "0.727, 0.766, 0.815, 0.914, 1.209, 1.702, 2.194", \
+                          "0.680, 0.719, 0.768, 0.867, 1.162, 1.655, 2.147", \
+                          "0.586, 0.625, 0.674, 0.773, 1.068, 1.561, 2.053", \
+                          "0.304, 0.343, 0.393, 0.491, 0.787, 1.279, 1.772", \
+                          "-0.166, -0.126, -0.077, 0.021, 0.317, 0.809, 1.302", \
+                          "-0.635, -0.596, -0.547, -0.448, -0.153, 0.340, 0.832" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "1.225, 1.263, 1.312, 1.408, 1.696, 2.177, 2.658", \
+                          "1.187, 1.226, 1.274, 1.370, 1.659, 2.139, 2.620", \
+                          "1.140, 1.179, 1.227, 1.323, 1.612, 2.092, 2.573", \
+                          "1.047, 1.085, 1.133, 1.229, 1.518, 1.998, 2.479", \
+                          "0.765, 0.803, 0.851, 0.947, 1.236, 1.717, 2.197", \
+                          "0.295, 0.333, 0.382, 0.478, 0.766, 1.247, 1.728", \
+                          "-0.175, -0.136, -0.088, 0.008, 0.297, 0.777, 1.258" \
+                        )
+                        }
+                } 
+                timing() {
+                        related_pin     : CLK;
+                        timing_type     : hold_rising ;
+                        rise_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.169, 0.130, 0.081, 0.000, 0.000, 0.000, 0.000", \
+                          "0.639, 0.600, 0.550, 0.452, 0.156, 0.000, 0.000", \
+                          "1.109, 1.069, 1.020, 0.922, 0.626, 0.134, 0.000" \
+                        )
+                        }
+                        fall_constraint(RF1SHD_constraint_template) {
+                        index_1 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        index_2 ("0.010, 0.050, 0.100, 0.200, 0.500, 1.000, 1.500");
+                        values ( \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000", \
+                          "0.410, 0.372, 0.323, 0.227, 0.000, 0.000, 0.000", \
+                          "0.880, 0.841, 0.793, 0.697, 0.408, 0.000, 0.000" \
+                        )
+                        }
+               }
+        }
+
+        cell_leakage_power : 8.55E-5;
+}
+}
