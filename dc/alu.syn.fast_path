@@ -7,72 +7,15 @@ Report : timing
         -sort_by slack
 Design : alu
 Version: U-2022.12-SP7
-Date   : Sat Nov 16 22:08:20 2024
+Date   : Sat Nov 23 14:50:10 2024
 ****************************************
 
 Operating Conditions: tt_1p2v_25c   Library: scx3_cmos8rf_lpvt_tt_1p2v_25c
 Wire Load Model Mode: top
 
-  Startpoint: a[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_0_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[0] (in)                                0.02       0.07 f
-  ...
-  mult_out_reg_0_/D (DFFRXLTS)             0.33       0.41 f
-  data arrival time                                   0.41
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_0_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.41
-  -----------------------------------------------------------
-  slack (MET)                                         0.44
-
-
-  Startpoint: a[0] (input port clocked by clk)
-  Endpoint: add_out_reg_1_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[0] (in)                                0.02       0.07 f
-  ...
-  add_out_reg_1_/D (DFFRXLTS)              0.38       0.46 f
-  data arrival time                                   0.46
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_1_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.46
-  -----------------------------------------------------------
-  slack (MET)                                         0.50
-
-
-  Startpoint: mult_out_reg_30_
+  Startpoint: result_reg_31_
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_30_
-            (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[31] (output port clocked by clk)
   Path Group: clk
   Path Type: min
 
@@ -80,628 +23,20 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  mult_out_reg_30_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_30_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_30_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
+  result_reg_31_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_31_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[31] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_30_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
   -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
+  data required time                                 -0.05
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_29_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_29_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_29_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_29_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_29_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_29_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_28_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_28_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_28_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_28_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_28_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_28_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_27_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_27_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_27_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_27_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_27_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_27_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_26_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_26_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_26_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_26_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_26_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_26_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_25_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_25_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_25_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_25_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_25_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_25_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_24_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_24_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_24_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_24_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_24_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_24_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_23_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_23_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_23_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_23_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_23_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_23_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_22_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_22_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_22_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_22_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_22_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_22_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_21_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_21_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_21_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_21_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_21_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_21_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_20_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_20_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_20_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_20_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_20_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_20_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_19_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_19_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_19_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_19_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_19_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_19_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_18_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_18_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_18_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_18_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_18_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_18_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_17_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_17_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_17_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_17_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_17_/D (DFFRX2TS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_17_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.02      -0.02
-  data required time                                 -0.02
-  -----------------------------------------------------------
-  data required time                                 -0.02
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.56
-
-
-  Startpoint: mult_out_reg_31_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_31_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_31_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_31_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_31_/D (DFFRXLTS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_31_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.58
-
-
-  Startpoint: mult_out_reg_16_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_16_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_16_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_16_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_16_/D (DFFRXLTS)              0.24       0.54 f
-  data arrival time                                   0.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_16_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.54
-  -----------------------------------------------------------
-  slack (MET)                                         0.58
-
-
-  Startpoint: a[0] (input port clocked by clk)
-  Endpoint: add_out_reg_0_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[0] (in)                                0.03       0.08 r
-  ...
-  add_out_reg_0_/D (DFFRXLTS)              0.49       0.57 f
-  data arrival time                                   0.57
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_0_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.57
-  -----------------------------------------------------------
-  slack (MET)                                         0.62
-
-
-  Startpoint: b[11] (input port clocked by clk)
-  Endpoint: add_out_reg_11_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[11] (in)                               0.04       0.09 r
-  ...
-  add_out_reg_11_/D (DFFRXLTS)             0.53       0.62 f
-  data arrival time                                   0.62
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_11_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.62
-  -----------------------------------------------------------
-  slack (MET)                                         0.66
-
-
-  Startpoint: a[2] (input port clocked by clk)
-  Endpoint: add_out_reg_3_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[2] (in)                                0.03       0.08 r
-  ...
-  add_out_reg_3_/D (DFFRXLTS)              0.55       0.63 f
-  data arrival time                                   0.63
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_3_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.63
-  -----------------------------------------------------------
-  slack (MET)                                         0.67
-
-
-  Startpoint: add_out_reg_8_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_8_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_8_/CK (DFFRHQX1TS)           0.00       0.00 r
-  add_out_reg_8_/Q (DFFRHQX1TS)            0.34       0.34 f
-  ...
-  result_reg_8_/D (DFFRX2TS)               0.31       0.65 f
-  data arrival time                                   0.65
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_8_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.65
-  -----------------------------------------------------------
-  slack (MET)                                         0.67
-
-
-  Startpoint: mult_out_reg_15_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_15_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_15_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_15_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_15_/D (DFFRX2TS)              0.36       0.65 f
-  data arrival time                                   0.65
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_15_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.65
-  -----------------------------------------------------------
-  slack (MET)                                         0.68
-
-
-  Startpoint: mult_out_reg_14_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result_reg_14_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_14_/CK (DFFRHQX4TS)         0.00       0.00 r
-  mult_out_reg_14_/Q (DFFRHQX4TS)          0.29       0.29 f
-  ...
-  result_reg_14_/D (DFFRX2TS)              0.36       0.65 f
-  data arrival time                                   0.65
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_14_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.65
-  -----------------------------------------------------------
-  slack (MET)                                         0.68
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_30_
@@ -714,10 +49,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_30_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_30_/Q (DFFRX2TS)              0.64       0.64 r
-  result[30] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_30_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_30_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[30] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -725,9 +60,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_29_
@@ -740,10 +75,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_29_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_29_/Q (DFFRX2TS)              0.64       0.64 r
-  result[29] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_29_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_29_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[29] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -751,9 +86,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_28_
@@ -766,10 +101,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_28_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_28_/Q (DFFRX2TS)              0.64       0.64 r
-  result[28] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_28_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_28_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[28] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -777,9 +112,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_27_
@@ -792,10 +127,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_27_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_27_/Q (DFFRX2TS)              0.64       0.64 r
-  result[27] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_27_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_27_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[27] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -803,9 +138,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_26_
@@ -818,10 +153,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_26_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_26_/Q (DFFRX2TS)              0.64       0.64 r
-  result[26] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_26_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_26_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[26] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -829,9 +164,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_25_
@@ -844,10 +179,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_25_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_25_/Q (DFFRX2TS)              0.64       0.64 r
-  result[25] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_25_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_25_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[25] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -855,9 +190,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_24_
@@ -870,10 +205,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_24_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_24_/Q (DFFRX2TS)              0.64       0.64 r
-  result[24] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_24_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_24_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[24] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -881,9 +216,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_23_
@@ -896,10 +231,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_23_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_23_/Q (DFFRX2TS)              0.64       0.64 r
-  result[23] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_23_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_23_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[23] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -907,9 +242,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_22_
@@ -922,10 +257,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_22_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_22_/Q (DFFRX2TS)              0.64       0.64 r
-  result[22] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_22_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_22_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[22] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -933,9 +268,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_21_
@@ -948,10 +283,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_21_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_21_/Q (DFFRX2TS)              0.64       0.64 r
-  result[21] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_21_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_21_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[21] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -959,9 +294,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_20_
@@ -974,10 +309,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_20_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_20_/Q (DFFRX2TS)              0.64       0.64 r
-  result[20] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_20_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_20_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[20] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -985,9 +320,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_19_
@@ -1000,10 +335,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_19_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_19_/Q (DFFRX2TS)              0.64       0.64 r
-  result[19] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_19_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_19_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[19] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1011,9 +346,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_18_
@@ -1026,10 +361,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_18_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_18_/Q (DFFRX2TS)              0.64       0.64 r
-  result[18] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_18_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_18_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[18] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1037,9 +372,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_17_
@@ -1052,10 +387,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_17_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_17_/Q (DFFRX2TS)              0.64       0.64 r
-  result[17] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_17_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_17_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[17] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1063,9 +398,35 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
+
+
+  Startpoint: result_reg_16_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[16] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_16_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_16_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[16] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.30
+  -----------------------------------------------------------
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_15_
@@ -1078,10 +439,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_15_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_15_/Q (DFFRX2TS)              0.64       0.64 r
-  result[15] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_15_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_15_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[15] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1089,9 +450,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_14_
@@ -1104,10 +465,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_14_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_14_/Q (DFFRX2TS)              0.64       0.64 r
-  result[14] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_14_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_14_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[14] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1115,9 +476,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_13_
@@ -1130,10 +491,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_13_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_13_/Q (DFFRX2TS)              0.64       0.64 r
-  result[13] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_13_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_13_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[13] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1141,9 +502,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_12_
@@ -1156,10 +517,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_12_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_12_/Q (DFFRX2TS)              0.64       0.64 r
-  result[12] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_12_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_12_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[12] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1167,35 +528,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
-
-
-  Startpoint: result_reg_11_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[11] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_11_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_11_/Q (DFFRX2TS)              0.64       0.64 r
-  result[11] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.64
-  -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_10_
@@ -1208,10 +543,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_10_/CK (DFFRX2TS)             0.00       0.00 r
-  result_reg_10_/Q (DFFRX2TS)              0.64       0.64 r
-  result[10] (out)                         0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_10_/CK (DFFRHQX4TS)           0.00       0.00 r
+  result_reg_10_/Q (DFFRHQX4TS)            0.30       0.30 r
+  result[10] (out)                         0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1219,9 +554,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_9_
@@ -1234,10 +569,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_9_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_9_/Q (DFFRX2TS)               0.64       0.64 r
-  result[9] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_9_/CK (DFFRHQX4TS)            0.00       0.00 r
+  result_reg_9_/Q (DFFRHQX4TS)             0.30       0.30 r
+  result[9] (out)                          0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1245,9 +580,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_8_
@@ -1260,10 +595,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_8_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_8_/Q (DFFRX2TS)               0.64       0.64 r
-  result[8] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_8_/CK (DFFRHQX4TS)            0.00       0.00 r
+  result_reg_8_/Q (DFFRHQX4TS)             0.30       0.30 r
+  result[8] (out)                          0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1271,9 +606,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_7_
@@ -1286,10 +621,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_7_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_7_/Q (DFFRX2TS)               0.64       0.64 r
-  result[7] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_7_/CK (DFFRHQX4TS)            0.00       0.00 r
+  result_reg_7_/Q (DFFRHQX4TS)             0.30       0.30 r
+  result[7] (out)                          0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1297,113 +632,9 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
-
-
-  Startpoint: result_reg_6_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[6] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_6_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_6_/Q (DFFRX2TS)               0.64       0.64 r
-  result[6] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.64
-  -----------------------------------------------------------
-  slack (MET)                                         0.69
-
-
-  Startpoint: result_reg_5_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[5] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_5_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_5_/Q (DFFRX2TS)               0.64       0.64 r
-  result[5] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.64
-  -----------------------------------------------------------
-  slack (MET)                                         0.69
-
-
-  Startpoint: result_reg_4_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[4] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_4_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_4_/Q (DFFRX2TS)               0.64       0.64 r
-  result[4] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.64
-  -----------------------------------------------------------
-  slack (MET)                                         0.69
-
-
-  Startpoint: result_reg_3_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[3] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_3_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_3_/Q (DFFRX2TS)               0.64       0.64 r
-  result[3] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.64
-  -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
 
 
   Startpoint: result_reg_2_
@@ -1416,10 +647,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_2_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_2_/Q (DFFRX2TS)               0.64       0.64 r
-  result[2] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_2_/CK (DFFRHQX4TS)            0.00       0.00 r
+  result_reg_2_/Q (DFFRHQX4TS)             0.30       0.30 r
+  result[2] (out)                          0.00       0.30 r
+  data arrival time                                   0.30
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1427,9 +658,141 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.30
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.35
+
+
+  Startpoint: result_reg_6_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[6] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_6_/CK (DFFRHQX2TS)            0.00       0.00 r
+  result_reg_6_/Q (DFFRHQX2TS)             0.32       0.32 f
+  result[6] (out)                          0.00       0.32 f
+  data arrival time                                   0.32
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.32
+  -----------------------------------------------------------
+  slack (MET)                                         0.37
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_4_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_4_/D (DFFRXLTS)               0.63       0.70 f
+  data arrival time                                   0.70
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_4_/CK (DFFRXLTS)              0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -0.70
+  -----------------------------------------------------------
+  slack (MET)                                         0.74
+
+
+  Startpoint: result_reg_5_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[5] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_5_/CK (DFFRXLTS)              0.00       0.00 r
+  result_reg_5_/Q (DFFRXLTS)               0.75       0.75 r
+  result[5] (out)                          0.00       0.75 r
+  data arrival time                                   0.75
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.75
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: result_reg_4_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[4] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_4_/CK (DFFRXLTS)              0.00       0.00 r
+  result_reg_4_/Q (DFFRXLTS)               0.75       0.75 r
+  result[4] (out)                          0.00       0.75 r
+  data arrival time                                   0.75
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.75
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: result_reg_3_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[3] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_3_/CK (DFFRXLTS)              0.00       0.00 r
+  result_reg_3_/Q (DFFRXLTS)               0.75       0.75 r
+  result[3] (out)                          0.00       0.75 r
+  data arrival time                                   0.75
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.75
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
 
 
   Startpoint: result_reg_0_
@@ -1442,10 +805,10 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_0_/CK (DFFRX2TS)              0.00       0.00 r
-  result_reg_0_/Q (DFFRX2TS)               0.64       0.64 r
-  result[0] (out)                          0.00       0.64 r
-  data arrival time                                   0.64
+  result_reg_0_/CK (DFFSXLTS)              0.00       0.00 r
+  result_reg_0_/QN (DFFSXLTS)              0.75       0.75 f
+  result[0] (out)                          0.00       0.75 f
+  data arrival time                                   0.75
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
@@ -1453,13 +816,13 @@ Wire Load Model Mode: top
   data required time                                 -0.05
   -----------------------------------------------------------
   data required time                                 -0.05
-  data arrival time                                  -0.64
+  data arrival time                                  -0.75
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.80
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_10_
+  Endpoint: result_reg_19_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: min
@@ -1469,25 +832,25 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_10_/D (DFFRX2TS)              0.58       0.66 f
-  data arrival time                                   0.66
+  result_reg_19_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_10_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_19_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.66
+  data required time                                 -0.11
+  data arrival time                                  -0.69
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.80
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_9_
+  Endpoint: result_reg_30_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: min
@@ -1497,25 +860,221 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_9_/D (DFFRX2TS)               0.58       0.66 f
-  data arrival time                                   0.66
+  result_reg_30_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_9_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_30_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.66
+  data required time                                 -0.11
+  data arrival time                                  -0.69
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.80
 
 
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: add_out_reg_15_
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_28_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_28_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_28_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_27_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_27_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_27_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_26_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_26_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_26_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_24_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_24_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_24_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_23_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_23_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_23_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_22_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_22_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_22_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_29_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_29_/D (DFFRHQX4TS)            0.62       0.69 f
+  data arrival time                                   0.69
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_29_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.69
+  -----------------------------------------------------------
+  slack (MET)                                         0.80
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_17_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: min
@@ -1525,25 +1084,109 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
+  op_sel[0] (in)                           0.01       0.06 f
   ...
-  add_out_reg_15_/D (DFFRXLTS)             0.57       0.65 f
-  data arrival time                                   0.65
+  result_reg_17_/D (DFFRHQX4TS)            0.72       0.79 r
+  data arrival time                                   0.79
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  add_out_reg_15_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
+  result_reg_17_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.02      -0.02
+  data required time                                 -0.02
   -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.65
+  data required time                                 -0.02
+  data arrival time                                  -0.79
   -----------------------------------------------------------
-  slack (MET)                                         0.69
+  slack (MET)                                         0.81
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_6_
+  Endpoint: result_reg_18_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_18_/D (DFFRHQX4TS)            0.72       0.78 r
+  data arrival time                                   0.78
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_18_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.03      -0.03
+  data required time                                 -0.03
+  -----------------------------------------------------------
+  data required time                                 -0.03
+  data arrival time                                  -0.78
+  -----------------------------------------------------------
+  slack (MET)                                         0.81
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_31_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_31_/D (DFFRHQX4TS)            0.72       0.78 r
+  data arrival time                                   0.78
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_31_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.03      -0.03
+  data required time                                 -0.03
+  -----------------------------------------------------------
+  data required time                                 -0.03
+  data arrival time                                  -0.78
+  -----------------------------------------------------------
+  slack (MET)                                         0.81
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_16_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_16_/D (DFFRHQX4TS)            0.72       0.78 r
+  data arrival time                                   0.78
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_16_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.03      -0.03
+  data required time                                 -0.03
+  -----------------------------------------------------------
+  data required time                                 -0.03
+  data arrival time                                  -0.78
+  -----------------------------------------------------------
+  slack (MET)                                         0.81
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_21_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: min
@@ -1553,21 +1196,77 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_6_/D (DFFRX2TS)               0.61       0.70 f
+  result_reg_21_/D (DFFRHQX4TS)            0.63       0.70 f
   data arrival time                                   0.70
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_6_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_21_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
   -----------------------------------------------------------
-  data required time                                 -0.03
+  data required time                                 -0.11
   data arrival time                                  -0.70
   -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.82
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_25_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_25_/D (DFFRHQX4TS)            0.63       0.70 f
+  data arrival time                                   0.70
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_25_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.70
+  -----------------------------------------------------------
+  slack (MET)                                         0.82
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_20_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_20_/D (DFFRHQX4TS)            0.63       0.70 f
+  data arrival time                                   0.70
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_20_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -0.70
+  -----------------------------------------------------------
+  slack (MET)                                         0.82
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
@@ -1581,133 +1280,21 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_5_/D (DFFRX2TS)               0.61       0.70 f
-  data arrival time                                   0.70
+  result_reg_5_/D (DFFRXLTS)               0.71       0.78 f
+  data arrival time                                   0.78
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_5_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
-  -----------------------------------------------------------
-  slack (MET)                                         0.73
-
-
-  Startpoint: a[2] (input port clocked by clk)
-  Endpoint: add_out_reg_2_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[2] (in)                                0.03       0.08 r
-  ...
-  add_out_reg_2_/D (DFFRXLTS)              0.60       0.69 f
-  data arrival time                                   0.69
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_2_/CK (DFFRXLTS)             0.00       0.00 r
+  result_reg_5_/CK (DFFRXLTS)              0.00       0.00 r
   library hold time                       -0.04      -0.04
   data required time                                 -0.04
   -----------------------------------------------------------
   data required time                                 -0.04
-  data arrival time                                  -0.69
+  data arrival time                                  -0.78
   -----------------------------------------------------------
-  slack (MET)                                         0.73
-
-
-  Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_7_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
-  ...
-  result_reg_7_/D (DFFRX2TS)               0.61       0.70 f
-  data arrival time                                   0.70
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_7_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
-  -----------------------------------------------------------
-  slack (MET)                                         0.73
-
-
-  Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_13_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
-  ...
-  result_reg_13_/D (DFFRX2TS)              0.61       0.70 f
-  data arrival time                                   0.70
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_13_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
-  -----------------------------------------------------------
-  slack (MET)                                         0.73
-
-
-  Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_12_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
-  ...
-  result_reg_12_/D (DFFRX2TS)              0.61       0.70 f
-  data arrival time                                   0.70
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_12_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
-  -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.82
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
@@ -1721,25 +1308,25 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_3_/D (DFFRX2TS)               0.61       0.70 f
-  data arrival time                                   0.70
+  result_reg_3_/D (DFFRXLTS)               0.71       0.78 f
+  data arrival time                                   0.78
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_3_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_3_/CK (DFFRXLTS)              0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
+  data required time                                 -0.04
+  data arrival time                                  -0.78
   -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.82
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
-  Endpoint: result_reg_2_
+  Endpoint: result_reg_7_
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: min
@@ -1749,21 +1336,73 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_2_/D (DFFRX2TS)               0.61       0.70 f
-  data arrival time                                   0.70
+  result_reg_7_/D (DFFRHQX4TS)             0.64       0.71 f
+  data arrival time                                   0.71
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_2_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_7_/CK (DFFRHQX4TS)            0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
+  data required time                                 -0.12
+  data arrival time                                  -0.71
   -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.83
+
+
+  Startpoint: result_reg_11_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[11] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_11_/CK (DFFSX1TS)             0.00       0.00 r
+  result_reg_11_/QN (DFFSX1TS)             0.79       0.79 f
+  result[11] (out)                         0.00       0.79 f
+  data arrival time                                   0.79
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.79
+  -----------------------------------------------------------
+  slack (MET)                                         0.84
+
+
+  Startpoint: result_reg_1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result[1] (output port clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_1_/CK (DFFSX1TS)              0.00       0.00 r
+  result_reg_1_/QN (DFFSX1TS)              0.79       0.79 f
+  result[1] (out)                          0.00       0.79 f
+  data arrival time                                   0.79
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -0.05      -0.05
+  data required time                                 -0.05
+  -----------------------------------------------------------
+  data required time                                 -0.05
+  data arrival time                                  -0.79
+  -----------------------------------------------------------
+  slack (MET)                                         0.84
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
@@ -1777,21 +1416,273 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_0_/D (DFFRX2TS)               0.61       0.70 f
-  data arrival time                                   0.70
+  result_reg_0_/D (DFFSXLTS)               0.69       0.76 r
+  data arrival time                                   0.76
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_0_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_0_/CK (DFFSXLTS)              0.00       0.00 r
+  library hold time                       -0.09      -0.09
+  data required time                                 -0.09
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
+  data required time                                 -0.09
+  data arrival time                                  -0.76
   -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.85
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_13_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_13_/D (DFFRHQX4TS)            0.67       0.74 f
+  data arrival time                                   0.74
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_13_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
+  -----------------------------------------------------------
+  data required time                                 -0.12
+  data arrival time                                  -0.74
+  -----------------------------------------------------------
+  slack (MET)                                         0.86
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_8_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_8_/D (DFFRHQX4TS)             0.68       0.74 f
+  data arrival time                                   0.74
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_8_/CK (DFFRHQX4TS)            0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
+  -----------------------------------------------------------
+  data required time                                 -0.12
+  data arrival time                                  -0.74
+  -----------------------------------------------------------
+  slack (MET)                                         0.86
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_2_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_2_/D (DFFRHQX4TS)             0.68       0.74 f
+  data arrival time                                   0.74
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_2_/CK (DFFRHQX4TS)            0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
+  -----------------------------------------------------------
+  data required time                                 -0.12
+  data arrival time                                  -0.74
+  -----------------------------------------------------------
+  slack (MET)                                         0.86
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_15_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_15_/D (DFFRHQX4TS)            0.68       0.75 f
+  data arrival time                                   0.75
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_15_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
+  -----------------------------------------------------------
+  data required time                                 -0.12
+  data arrival time                                  -0.75
+  -----------------------------------------------------------
+  slack (MET)                                         0.86
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_12_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_12_/D (DFFRHQX4TS)            0.69       0.75 f
+  data arrival time                                   0.75
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_12_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.12      -0.12
+  data required time                                 -0.12
+  -----------------------------------------------------------
+  data required time                                 -0.12
+  data arrival time                                  -0.75
+  -----------------------------------------------------------
+  slack (MET)                                         0.87
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_14_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 r
+  op_sel[0] (in)                           0.02       0.07 r
+  ...
+  result_reg_14_/D (DFFRHQX4TS)            0.77       0.84 r
+  data arrival time                                   0.84
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_14_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -0.84
+  -----------------------------------------------------------
+  slack (MET)                                         0.88
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_6_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_6_/D (DFFRHQX2TS)             0.80       0.86 r
+  data arrival time                                   0.86
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_6_/CK (DFFRHQX2TS)            0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         0.91
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_9_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_9_/D (DFFRHQX4TS)             0.81       0.87 r
+  data arrival time                                   0.87
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_9_/CK (DFFRHQX4TS)            0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -0.87
+  -----------------------------------------------------------
+  slack (MET)                                         0.91
+
+
+  Startpoint: op_sel[0] (input port clocked by clk)
+  Endpoint: result_reg_10_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.05       0.05 f
+  op_sel[0] (in)                           0.01       0.06 f
+  ...
+  result_reg_10_/D (DFFRHQX4TS)            0.81       0.87 r
+  data arrival time                                   0.87
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  result_reg_10_/CK (DFFRHQX4TS)           0.00       0.00 r
+  library hold time                       -0.04      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -0.87
+  -----------------------------------------------------------
+  slack (MET)                                         0.91
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
@@ -1805,49 +1696,21 @@ Wire Load Model Mode: top
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
+  op_sel[0] (in)                           0.02       0.07 r
   ...
-  result_reg_11_/D (DFFRX2TS)              0.62       0.70 f
-  data arrival time                                   0.70
+  result_reg_11_/D (DFFSX1TS)              0.78       0.85 r
+  data arrival time                                   0.85
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  result_reg_11_/CK (DFFRX2TS)             0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
+  result_reg_11_/CK (DFFSX1TS)             0.00       0.00 r
+  library hold time                       -0.08      -0.08
+  data required time                                 -0.08
   -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.70
+  data required time                                 -0.08
+  data arrival time                                  -0.85
   -----------------------------------------------------------
-  slack (MET)                                         0.73
-
-
-  Startpoint: a[8] (input port clocked by clk)
-  Endpoint: add_out_reg_9_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[8] (in)                                0.03       0.08 f
-  ...
-  add_out_reg_9_/D (DFFRXLTS)              0.61       0.69 f
-  data arrival time                                   0.69
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_9_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.69
-  -----------------------------------------------------------
-  slack (MET)                                         0.73
+  slack (MET)                                         0.93
 
 
   Startpoint: op_sel[0] (input port clocked by clk)
@@ -1860,1276 +1723,22 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  op_sel[0] (in)                           0.04       0.09 r
-  ...
-  result_reg_1_/D (DFFRXLTS)               0.62       0.70 f
-  data arrival time                                   0.70
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_1_/CK (DFFRXLTS)              0.00       0.00 r
-  library hold time                       -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.70
-  -----------------------------------------------------------
-  slack (MET)                                         0.75
-
-
-  Startpoint: b[5] (input port clocked by clk)
-  Endpoint: add_out_reg_5_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
   input external delay                     0.05       0.05 f
-  b[5] (in)                                0.03       0.08 f
+  op_sel[0] (in)                           0.01       0.06 f
   ...
-  add_out_reg_5_/D (DFFRXLTS)              0.64       0.72 f
-  data arrival time                                   0.72
+  result_reg_1_/D (DFFSX1TS)               0.88       0.95 f
+  data arrival time                                   0.95
 
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  add_out_reg_5_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
+  result_reg_1_/CK (DFFSX1TS)              0.00       0.00 r
+  library hold time                       -0.02      -0.02
+  data required time                                 -0.02
   -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.72
+  data required time                                 -0.02
+  data arrival time                                  -0.95
   -----------------------------------------------------------
-  slack (MET)                                         0.76
-
-
-  Startpoint: b[5] (input port clocked by clk)
-  Endpoint: add_out_reg_6_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[5] (in)                                0.03       0.08 f
-  ...
-  add_out_reg_6_/D (DFFRXLTS)              0.66       0.73 f
-  data arrival time                                   0.73
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_6_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.73
-  -----------------------------------------------------------
-  slack (MET)                                         0.77
-
-
-  Startpoint: result_reg_31_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[31] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_31_/CK (DFFRXLTS)             0.00       0.00 r
-  result_reg_31_/Q (DFFRXLTS)              0.75       0.75 r
-  result[31] (out)                         0.00       0.75 r
-  data arrival time                                   0.75
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.75
-  -----------------------------------------------------------
-  slack (MET)                                         0.80
-
-
-  Startpoint: result_reg_16_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[16] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_16_/CK (DFFRXLTS)             0.00       0.00 r
-  result_reg_16_/Q (DFFRXLTS)              0.75       0.75 r
-  result[16] (out)                         0.00       0.75 r
-  data arrival time                                   0.75
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.75
-  -----------------------------------------------------------
-  slack (MET)                                         0.80
-
-
-  Startpoint: result_reg_1_
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: result[1] (output port clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_1_/CK (DFFRXLTS)              0.00       0.00 r
-  result_reg_1_/Q (DFFRXLTS)               0.75       0.75 r
-  result[1] (out)                          0.00       0.75 r
-  data arrival time                                   0.75
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  output external delay                   -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -0.75
-  -----------------------------------------------------------
-  slack (MET)                                         0.80
-
-
-  Startpoint: a[8] (input port clocked by clk)
-  Endpoint: add_out_reg_8_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[8] (in)                                0.03       0.08 f
-  ...
-  add_out_reg_8_/D (DFFRHQX1TS)            0.65       0.74 r
-  data arrival time                                   0.74
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_8_/CK (DFFRHQX1TS)           0.00       0.00 r
-  library hold time                       -0.07      -0.07
-  data required time                                 -0.07
-  -----------------------------------------------------------
-  data required time                                 -0.07
-  data arrival time                                  -0.74
-  -----------------------------------------------------------
-  slack (MET)                                         0.81
-
-
-  Startpoint: a[12] (input port clocked by clk)
-  Endpoint: add_out_reg_12_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[12] (in)                               0.03       0.08 r
-  ...
-  add_out_reg_12_/D (DFFRXLTS)             0.71       0.79 f
-  data arrival time                                   0.79
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_12_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.79
-  -----------------------------------------------------------
-  slack (MET)                                         0.83
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: add_out_reg_7_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  add_out_reg_7_/D (DFFRXLTS)              0.73       0.80 f
-  data arrival time                                   0.80
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_7_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.80
-  -----------------------------------------------------------
-  slack (MET)                                         0.84
-
-
-  Startpoint: op_sel[1] (input port clocked by clk)
-  Endpoint: result_reg_4_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  op_sel[1] (in)                           0.05       0.10 r
-  ...
-  result_reg_4_/D (DFFRX2TS)               0.72       0.81 f
-  data arrival time                                   0.81
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  result_reg_4_/CK (DFFRX2TS)              0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -0.81
-  -----------------------------------------------------------
-  slack (MET)                                         0.84
-
-
-  Startpoint: a[8] (input port clocked by clk)
-  Endpoint: add_out_reg_10_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[8] (in)                                0.03       0.08 f
-  ...
-  add_out_reg_10_/D (DFFRXLTS)             0.72       0.80 f
-  data arrival time                                   0.80
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_10_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.80
-  -----------------------------------------------------------
-  slack (MET)                                         0.84
-
-
-  Startpoint: b[14] (input port clocked by clk)
-  Endpoint: add_out_reg_14_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[14] (in)                               0.04       0.09 r
-  ...
-  add_out_reg_14_/D (DFFRXLTS)             0.71       0.81 f
-  data arrival time                                   0.81
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_14_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.81
-  -----------------------------------------------------------
-  slack (MET)                                         0.85
-
-
-  Startpoint: b[12] (input port clocked by clk)
-  Endpoint: add_out_reg_13_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[12] (in)                               0.02       0.07 f
-  ...
-  add_out_reg_13_/D (DFFRXLTS)             0.77       0.84 f
-  data arrival time                                   0.84
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_13_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.84
-  -----------------------------------------------------------
-  slack (MET)                                         0.88
-
-
-  Startpoint: b[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_2_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[0] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_2_/D (DFFRXLTS)             0.80       0.88 f
-  data arrival time                                   0.88
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_2_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.88
-  -----------------------------------------------------------
-  slack (MET)                                         0.92
-
-
-  Startpoint: b[13] (input port clocked by clk)
-  Endpoint: add_out_reg_16_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[13] (in)                               0.03       0.08 f
-  ...
-  add_out_reg_16_/D (DFFRHQX2TS)           0.83       0.90 r
-  data arrival time                                   0.90
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_16_/CK (DFFRHQX2TS)          0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.90
-  -----------------------------------------------------------
-  slack (MET)                                         0.95
-
-
-  Startpoint: a[4] (input port clocked by clk)
-  Endpoint: add_out_reg_4_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[4] (in)                                0.03       0.08 r
-  ...
-  add_out_reg_4_/D (DFFRXLTS)              0.86       0.94 f
-  data arrival time                                   0.94
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  add_out_reg_4_/CK (DFFRXLTS)             0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -0.94
-  -----------------------------------------------------------
-  slack (MET)                                         0.99
-
-
-  Startpoint: b[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_3_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[0] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_3_/D (DFFRXLTS)             0.94       1.02 f
-  data arrival time                                   1.02
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_3_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.02
-  -----------------------------------------------------------
-  slack (MET)                                         1.06
-
-
-  Startpoint: a[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_1_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  a[0] (in)                                0.03       0.08 r
-  ...
-  mult_out_reg_1_/D (DFFRXLTS)             1.08       1.16 f
-  data arrival time                                   1.16
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_1_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.16
-  -----------------------------------------------------------
-  slack (MET)                                         1.21
-
-
-  Startpoint: b[4] (input port clocked by clk)
-  Endpoint: mult_out_reg_4_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[4] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_4_/D (DFFRXLTS)             1.10       1.18 f
-  data arrival time                                   1.18
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_4_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.18
-  -----------------------------------------------------------
-  slack (MET)                                         1.22
-
-
-  Startpoint: b[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_7_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[0] (in)                                0.05       0.10 r
-  ...
-  mult_out_reg_7_/D (DFFRXLTS)             1.11       1.21 f
-  data arrival time                                   1.21
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_7_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.21
-  -----------------------------------------------------------
-  slack (MET)                                         1.25
-
-
-  Startpoint: b[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_8_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[0] (in)                                0.05       0.10 r
-  ...
-  mult_out_reg_8_/D (DFFRXLTS)             1.14       1.24 f
-  data arrival time                                   1.24
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_8_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.24
-  -----------------------------------------------------------
-  slack (MET)                                         1.28
-
-
-  Startpoint: b[0] (input port clocked by clk)
-  Endpoint: mult_out_reg_5_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[0] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_5_/D (DFFRXLTS)             1.17       1.25 f
-  data arrival time                                   1.25
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_5_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.25
-  -----------------------------------------------------------
-  slack (MET)                                         1.29
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_30_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_30_/D (DFFRHQX4TS)          1.19       1.27 r
-  data arrival time                                   1.27
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_30_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.27
-  -----------------------------------------------------------
-  slack (MET)                                         1.30
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_31_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_31_/D (DFFRHQX4TS)          1.27       1.35 r
-  data arrival time                                   1.35
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_31_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.35
-  -----------------------------------------------------------
-  slack (MET)                                         1.39
-
-
-  Startpoint: b[5] (input port clocked by clk)
-  Endpoint: mult_out_reg_6_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[5] (in)                                0.04       0.09 r
-  ...
-  mult_out_reg_6_/D (DFFRXLTS)             1.26       1.35 f
-  data arrival time                                   1.35
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_6_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.35
-  -----------------------------------------------------------
-  slack (MET)                                         1.40
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_29_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_29_/D (DFFRHQX4TS)          1.29       1.37 r
-  data arrival time                                   1.37
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_29_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.37
-  -----------------------------------------------------------
-  slack (MET)                                         1.40
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_27_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_27_/D (DFFRHQX4TS)          1.38       1.47 r
-  data arrival time                                   1.47
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_27_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.47
-  -----------------------------------------------------------
-  slack (MET)                                         1.50
-
-
-  Startpoint: a[9] (input port clocked by clk)
-  Endpoint: mult_out_reg_9_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[9] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_9_/D (DFFRXLTS)             1.41       1.49 f
-  data arrival time                                   1.49
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_9_/CK (DFFRXLTS)            0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.49
-  -----------------------------------------------------------
-  slack (MET)                                         1.54
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: mult_out_reg_11_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_11_/D (DFFRXLTS)            1.42       1.50 f
-  data arrival time                                   1.50
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_11_/CK (DFFRXLTS)           0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.50
-  -----------------------------------------------------------
-  slack (MET)                                         1.54
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_26_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_26_/D (DFFRHQX4TS)          1.46       1.54 r
-  data arrival time                                   1.54
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_26_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.54
-  -----------------------------------------------------------
-  slack (MET)                                         1.57
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: mult_out_reg_13_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_13_/D (DFFRXLTS)            1.48       1.56 f
-  data arrival time                                   1.56
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_13_/CK (DFFRXLTS)           0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.56
-  -----------------------------------------------------------
-  slack (MET)                                         1.60
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: mult_out_reg_10_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_10_/D (DFFRXLTS)            1.51       1.58 f
-  data arrival time                                   1.58
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_10_/CK (DFFRXLTS)           0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.58
-  -----------------------------------------------------------
-  slack (MET)                                         1.62
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: mult_out_reg_12_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_12_/D (DFFRXLTS)            1.53       1.61 f
-  data arrival time                                   1.61
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_12_/CK (DFFRXLTS)           0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.61
-  -----------------------------------------------------------
-  slack (MET)                                         1.65
-
-
-  Startpoint: b[11] (input port clocked by clk)
-  Endpoint: mult_out_reg_23_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[11] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_23_/D (DFFRHQX4TS)          1.55       1.63 r
-  data arrival time                                   1.63
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_23_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.63
-  -----------------------------------------------------------
-  slack (MET)                                         1.66
-
-
-  Startpoint: a[15] (input port clocked by clk)
-  Endpoint: mult_out_reg_28_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[15] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_28_/D (DFFRHQX4TS)          1.61       1.70 r
-  data arrival time                                   1.70
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_28_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.70
-  -----------------------------------------------------------
-  slack (MET)                                         1.73
-
-
-  Startpoint: b[5] (input port clocked by clk)
-  Endpoint: mult_out_reg_15_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[5] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_15_/D (DFFRHQX4TS)          1.59       1.67 r
-  data arrival time                                   1.67
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_15_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.06      -0.06
-  data required time                                 -0.06
-  -----------------------------------------------------------
-  data required time                                 -0.06
-  data arrival time                                  -1.67
-  -----------------------------------------------------------
-  slack (MET)                                         1.73
-
-
-  Startpoint: b[9] (input port clocked by clk)
-  Endpoint: mult_out_reg_21_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[9] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_21_/D (DFFRHQX4TS)          1.64       1.72 r
-  data arrival time                                   1.72
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_21_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.72
-  -----------------------------------------------------------
-  slack (MET)                                         1.75
-
-
-  Startpoint: b[9] (input port clocked by clk)
-  Endpoint: mult_out_reg_24_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[9] (in)                                0.04       0.09 r
-  ...
-  mult_out_reg_24_/D (DFFRHQX4TS)          1.63       1.73 r
-  data arrival time                                   1.73
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_24_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.73
-  -----------------------------------------------------------
-  slack (MET)                                         1.75
-
-
-  Startpoint: b[14] (input port clocked by clk)
-  Endpoint: mult_out_reg_25_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[14] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_25_/D (DFFRHQX4TS)          1.66       1.74 r
-  data arrival time                                   1.74
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_25_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.74
-  -----------------------------------------------------------
-  slack (MET)                                         1.76
-
-
-  Startpoint: b[2] (input port clocked by clk)
-  Endpoint: mult_out_reg_17_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[2] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_17_/D (DFFRHQX4TS)          1.69       1.77 r
-  data arrival time                                   1.77
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_17_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.77
-  -----------------------------------------------------------
-  slack (MET)                                         1.80
-
-
-  Startpoint: b[5] (input port clocked by clk)
-  Endpoint: mult_out_reg_14_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[5] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_14_/D (DFFRHQX4TS)          1.68       1.75 r
-  data arrival time                                   1.75
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_14_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.06      -0.06
-  data required time                                 -0.06
-  -----------------------------------------------------------
-  data required time                                 -0.06
-  data arrival time                                  -1.75
-  -----------------------------------------------------------
-  slack (MET)                                         1.81
-
-
-  Startpoint: b[11] (input port clocked by clk)
-  Endpoint: mult_out_reg_22_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[11] (in)                               0.04       0.09 r
-  ...
-  mult_out_reg_22_/D (DFFRHQX4TS)          1.72       1.81 r
-  data arrival time                                   1.81
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_22_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.81
-  -----------------------------------------------------------
-  slack (MET)                                         1.84
-
-
-  Startpoint: b[9] (input port clocked by clk)
-  Endpoint: mult_out_reg_20_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[9] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_20_/D (DFFRHQX4TS)          1.79       1.86 r
-  data arrival time                                   1.86
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_20_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.03      -0.03
-  data required time                                 -0.03
-  -----------------------------------------------------------
-  data required time                                 -0.03
-  data arrival time                                  -1.86
-  -----------------------------------------------------------
-  slack (MET)                                         1.89
-
-
-  Startpoint: b[6] (input port clocked by clk)
-  Endpoint: mult_out_reg_16_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  b[6] (in)                                0.03       0.08 f
-  ...
-  mult_out_reg_16_/D (DFFRHQX4TS)          1.78       1.86 r
-  data arrival time                                   1.86
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_16_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.86
-  -----------------------------------------------------------
-  slack (MET)                                         1.90
-
-
-  Startpoint: b[9] (input port clocked by clk)
-  Endpoint: mult_out_reg_19_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 r
-  b[9] (in)                                0.04       0.09 r
-  ...
-  mult_out_reg_19_/D (DFFRHQX4TS)          1.79       1.88 r
-  data arrival time                                   1.88
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_19_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.04      -0.04
-  data required time                                 -0.04
-  -----------------------------------------------------------
-  data required time                                 -0.04
-  data arrival time                                  -1.88
-  -----------------------------------------------------------
-  slack (MET)                                         1.92
-
-
-  Startpoint: a[13] (input port clocked by clk)
-  Endpoint: mult_out_reg_18_
-            (rising edge-triggered flip-flop clocked by clk)
-  Path Group: clk
-  Path Type: min
-
-  Point                                    Incr       Path
-  -----------------------------------------------------------
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  input external delay                     0.05       0.05 f
-  a[13] (in)                               0.03       0.08 f
-  ...
-  mult_out_reg_18_/D (DFFRHQX4TS)          1.81       1.90 r
-  data arrival time                                   1.90
-
-  clock clk (rise edge)                    0.00       0.00
-  clock network delay (ideal)              0.00       0.00
-  mult_out_reg_18_/CK (DFFRHQX4TS)         0.00       0.00 r
-  library hold time                       -0.05      -0.05
-  data required time                                 -0.05
-  -----------------------------------------------------------
-  data required time                                 -0.05
-  data arrival time                                  -1.90
-  -----------------------------------------------------------
-  slack (MET)                                         1.94
+  slack (MET)                                         0.96
 
 
 1

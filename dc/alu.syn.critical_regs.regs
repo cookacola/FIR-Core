@@ -7,7 +7,7 @@ Report : timing
         -sort_by slack
 Design : alu
 Version: U-2022.12-SP7
-Date   : Sat Nov 16 22:08:19 2024
+Date   : Sat Nov 23 14:50:10 2024
 ****************************************
 
 Operating Conditions: tt_1p2v_25c   Library: scx3_cmos8rf_lpvt_tt_1p2v_25c
@@ -15,86 +15,37 @@ Wire Load Model Mode: top
 
 Endpoint                         Path Delay     Path Required     Slack
 ------------------------------------------------------------------------
-mult_out_reg_30_/D (DFFRHQX4TS)     3.39 f            1.74        -1.64
-mult_out_reg_27_/D (DFFRHQX4TS)     3.39 f            1.75        -1.64
-mult_out_reg_24_/D (DFFRHQX4TS)     3.39 f            1.75        -1.64
-mult_out_reg_26_/D (DFFRHQX4TS)     3.39 f            1.75        -1.64
-mult_out_reg_23_/D (DFFRHQX4TS)     3.39 f            1.75        -1.64
-mult_out_reg_29_/D (DFFRHQX4TS)     3.39 f            1.75        -1.64
-mult_out_reg_28_/D (DFFRHQX4TS)     3.38 f            1.75        -1.64
-mult_out_reg_25_/D (DFFRHQX4TS)     3.38 f            1.75        -1.63
-mult_out_reg_20_/D (DFFRHQX4TS)     3.38 f            1.75        -1.63
-mult_out_reg_22_/D (DFFRHQX4TS)     3.38 f            1.75        -1.63
-mult_out_reg_21_/D (DFFRHQX4TS)     3.38 f            1.75        -1.63
-mult_out_reg_18_/D (DFFRHQX4TS)     3.34 f            1.74        -1.61
-mult_out_reg_13_/D (DFFRXLTS)       3.10 r            1.50        -1.59
-mult_out_reg_19_/D (DFFRHQX4TS)     3.32 f            1.73        -1.58
-mult_out_reg_11_/D (DFFRXLTS)       3.08 r            1.52        -1.57
-mult_out_reg_31_/D (DFFRHQX4TS)     3.28 f            1.75        -1.53
-mult_out_reg_17_/D (DFFRHQX4TS)     3.28 f            1.75        -1.53
-mult_out_reg_15_/D (DFFRHQX4TS)     3.25 f            1.72        -1.52
-mult_out_reg_16_/D (DFFRHQX4TS)     3.20 f            1.73        -1.46
-mult_out_reg_10_/D (DFFRXLTS)       2.91 r            1.50        -1.41
-mult_out_reg_12_/D (DFFRXLTS)       2.91 r            1.52        -1.39
-mult_out_reg_14_/D (DFFRHQX4TS)     3.08 f            1.72        -1.36
-mult_out_reg_9_/D (DFFRXLTS)        2.74 r            1.50        -1.23
-mult_out_reg_8_/D (DFFRXLTS)        2.53 r            1.52        -1.01
-mult_out_reg_7_/D (DFFRXLTS)        2.51 r            1.50        -1.00
-mult_out_reg_6_/D (DFFRXLTS)        2.24 r            1.50        -0.73
-mult_out_reg_5_/D (DFFRXLTS)        2.11 r            1.52        -0.59
-mult_out_reg_4_/D (DFFRXLTS)        2.03 r            1.52        -0.51
-add_out_reg_15_/D (DFFRXLTS)        1.86 r            1.47        -0.39
-add_out_reg_13_/D (DFFRXLTS)        1.86 r            1.51        -0.35
-add_out_reg_9_/D (DFFRXLTS)         1.86 r            1.51        -0.35
-add_out_reg_12_/D (DFFRXLTS)        1.86 r            1.52        -0.34
-add_out_reg_11_/D (DFFRXLTS)        1.86 r            1.52        -0.34
-add_out_reg_14_/D (DFFRXLTS)        1.86 r            1.52        -0.34
-add_out_reg_10_/D (DFFRXLTS)        1.86 r            1.52        -0.34
-mult_out_reg_3_/D (DFFRXLTS)        1.83 r            1.52        -0.31
-mult_out_reg_2_/D (DFFRXLTS)        1.64 r            1.50        -0.14
-add_out_reg_7_/D (DFFRXLTS)         1.64 r            1.51        -0.13
-add_out_reg_5_/D (DFFRXLTS)         1.64 r            1.51        -0.13
-add_out_reg_6_/D (DFFRXLTS)         1.64 r            1.52        -0.13
-add_out_reg_8_/D (DFFRHQX1TS)       1.74 f            1.68        -0.07
-add_out_reg_16_/D (DFFRHQX2TS)      1.84 r            1.79        -0.05
-mult_out_reg_1_/D (DFFRXLTS)        1.55 r            1.57         0.02
-add_out_reg_4_/D (DFFRXLTS)         1.48 r            1.50         0.02
-result_reg_8_/D (DFFRX2TS)          1.51 f            1.58         0.07
-result_reg_15_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_14_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_13_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_12_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_11_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_10_/D (DFFRX2TS)         1.51 f            1.58         0.07
-result_reg_9_/D (DFFRX2TS)          1.51 f            1.58         0.07
-add_out_reg_3_/D (DFFRXLTS)         1.40 r            1.50         0.10
-result_reg_30_/D (DFFRX2TS)         1.30 f            1.59         0.28
-result_reg_29_/D (DFFRX2TS)         1.30 f            1.59         0.28
-result_reg_28_/D (DFFRX2TS)         1.30 f            1.59         0.28
-result_reg_19_/D (DFFRX2TS)         1.30 f            1.59         0.28
-result_reg_18_/D (DFFRX2TS)         1.30 f            1.59         0.28
-result_reg_17_/D (DFFRX2TS)         1.30 f            1.59         0.28
-add_out_reg_2_/D (DFFRXLTS)         1.21 r            1.52         0.30
-result_reg_31_/D (DFFRXLTS)         1.30 f            1.61         0.31
-result_reg_16_/D (DFFRXLTS)         1.30 f            1.61         0.31
-result_reg_3_/D (DFFRX2TS)          1.28 f            1.58         0.31
-result_reg_2_/D (DFFRX2TS)          1.28 f            1.58         0.31
-result_reg_0_/D (DFFRX2TS)          1.28 f            1.58         0.31
-result_reg_1_/D (DFFRXLTS)          1.28 f            1.60         0.33
-result_reg_7_/D (DFFRX2TS)          1.20 f            1.58         0.38
-result_reg_6_/D (DFFRX2TS)          1.20 f            1.58         0.38
-result_reg_5_/D (DFFRX2TS)          1.20 f            1.58         0.38
-result_reg_4_/D (DFFRX2TS)          1.20 f            1.58         0.38
-add_out_reg_0_/D (DFFRXLTS)         1.21 f            1.62         0.41
-add_out_reg_1_/D (DFFRXLTS)         0.96 r            1.52         0.55
-result_reg_27_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_26_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_25_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_24_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_23_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_22_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_21_/D (DFFRX2TS)         0.98 r            1.54         0.56
-result_reg_20_/D (DFFRX2TS)         0.98 r            1.54         0.56
-mult_out_reg_0_/D (DFFRXLTS)        0.77 r            1.57         0.80
+result_reg_20_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_24_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_25_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_30_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_28_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_27_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_26_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_21_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_19_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_29_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_22_/D (DFFRHQX4TS)       3.55 f            1.76        -1.79
+result_reg_18_/D (DFFRHQX4TS)       3.53 f            1.75        -1.77
+result_reg_17_/D (DFFRHQX4TS)       3.53 f            1.76        -1.77
+result_reg_23_/D (DFFRHQX4TS)       3.52 f            1.76        -1.76
+result_reg_16_/D (DFFRHQX4TS)       3.51 f            1.75        -1.76
+result_reg_31_/D (DFFRHQX4TS)       3.50 f            1.75        -1.75
+result_reg_15_/D (DFFRHQX4TS)       3.49 f            1.76        -1.73
+result_reg_13_/D (DFFRHQX4TS)       3.47 f            1.75        -1.72
+result_reg_11_/D (DFFSX1TS)         3.34 f            1.68        -1.67
+result_reg_14_/D (DFFRHQX4TS)       3.32 f            1.74        -1.58
+result_reg_8_/D (DFFRHQX4TS)        3.31 f            1.75        -1.55
+result_reg_12_/D (DFFRHQX4TS)       3.30 f            1.75        -1.54
+result_reg_10_/D (DFFRHQX4TS)       3.16 f            1.74        -1.42
+result_reg_7_/D (DFFRHQX4TS)        3.11 f            1.75        -1.36
+result_reg_9_/D (DFFRHQX4TS)        2.93 f            1.74        -1.19
+result_reg_5_/D (DFFRXLTS)          2.68 r            1.56        -1.12
+result_reg_6_/D (DFFRHQX2TS)        2.68 f            1.73        -0.95
+result_reg_4_/D (DFFRXLTS)          2.25 r            1.57        -0.68
+result_reg_3_/D (DFFRXLTS)          2.20 r            1.56        -0.64
+result_reg_2_/D (DFFRHQX4TS)        1.87 f            1.75        -0.11
+result_reg_1_/D (DFFSX1TS)          1.81 r            1.71        -0.10
+result_reg_0_/D (DFFSXLTS)          1.33 f            1.67         0.35
 
 1
