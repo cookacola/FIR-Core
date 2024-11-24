@@ -7,10 +7,10 @@ vlib work
 vmap work work
 
 # Include Netlist and Testbench
-vlog -suppress 12110 -incr ../../rtl/lfsr1/lfsr1.v 
-vlog -suppress 12110 -incr test_lfsr.v 
+vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v 
+vlog +acc -incr alu_testb.v
 
 # Run Simulator 
-vsim -suppress 12110 -t ps -lib work testbench 
+vsim +acc -t ps -lib work tb_alu 
 do waveformat.do   
 run -all

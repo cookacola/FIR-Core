@@ -1,4 +1,3 @@
-
 `timescale 1ns/1ps
 `define HALF_CLK_PERIOD 	#10.000
 `define QRTR_CLK_PERIOD		#5.000
