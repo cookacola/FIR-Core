@@ -65,16 +65,6 @@ module testbench();
 	end
 
 	initial	begin
-		qsim_out_1	= $fopen(`QSIM_OUT_FN_1, "w");
-		qsim_out_2	= $fopen(`QSIM_OUT_FN_2, "w");
-		rom7		= $fopen("./rom/rom7", "w");
-		rom6		= $fopen("./rom/rom6", "w");
-		rom5		= $fopen("./rom/rom5", "w");
-		rom4		= $fopen("./rom/rom4", "w");
-		rom3		= $fopen("./rom/rom3", "w");
-		rom2		= $fopen("./rom/rom2", "w");
-		rom1		= $fopen("./rom/rom1", "w");
-		rom0		= $fopen("./rom/rom0", "w");
 		clk	= 0;
 		writing = 1;
 		@(posedge clk);
@@ -87,16 +77,6 @@ module testbench();
 			@(posedge clk);
 		end
 		@(posedge clk);
-		$fclose(qsim_out_1);
-		$fclose(qsim_out_2);
-		$fclose(rom7);
-		$fclose(rom6);
-		$fclose(rom5);
-		$fclose(rom4);
-		$fclose(rom3);
-		$fclose(rom2);
-		$fclose(rom1);
-		$fclose(rom0);
 		$finish;
 	end
 
