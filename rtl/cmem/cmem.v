@@ -44,7 +44,7 @@ module cmem(
 
 	generate
 		for (i = 0; i < 8; i = i + 1) begin
-			cmem_core CMEM_CORE (
+			RF1SHD CMEM_CORE (
 				.Q   (QI[i]),
 				.A   (AI[i]),
 				.D   (DI),
