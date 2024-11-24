@@ -29,18 +29,18 @@ module cmem_tb;
 
 	/* Clock generation */
 	always	begin
-		#`HALF_CLK_PERIOD
+		`HALF_CLK_PERIOD
 		clk	= ~clk;
 	end
 
 	always	@(negedge clk) begin
-		#`QRTR_CLK_PERIOD
+		`QRTR_CLK_PERIOD
 		if (writing == 1) begin
 		/* Load random input data */
 			CEN		= `ON;
 			WEN		= `ON;
 			D		= $urandom%65536;
-		end else begin
+		end else if (writing == 0) begin
 		/* Prepare to read from random addresses */
 			WEN	= `OFF;
 			CEN	= `ON;
@@ -52,6 +52,8 @@ module cmem_tb;
 			A2	= $urandom%64;
 			A1	= $urandom%64;
 			A0	= $urandom%64;
+		end
+		else begin
 		end
 	end
 
