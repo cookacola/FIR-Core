@@ -44,22 +44,15 @@ module cmem(
 
 	generate
 		for (i = 0; i < 8; i = i + 1) begin
-			wire		WENIB;
-			wire	[7:0]	AIB;
-			/* For Correct Waveforms to appear, CADDRI needs to be defined	*/
-			/* Despite the fact that ~WENI && ~CENI condition evaluates to	*/
-			/* zero. I.e. in testbench have CADDRI set to 0 not Z.		*/
-			assign	WENIB	= (~WEN & ~CEN & (CADDRI[10:8]==i)) ? (`ON) : (`OFF);
-			assign	AIB	= (~WENIB) ? CADDRI[7:0] : AI[i];
-
-			sram256w20b	SRAM_CORE(
-							.Q	(QI[i]),
-							.A	(AIB),
-							.D	(DI),
-							.WEN	(WENIB),
-							.CEN	(CEN),
-							.CLK	(clk_bar)
+			cmem_core CMEM_CORE (
+				.Q   (QI[i]),
+				.A   (AI[i]),
+				.D   (DI),
+				.WEN (WEN),
+				.CEN (CEN),
+				.CLK (clk_bar)
 			);
 		end
+	endgenerate
 
-endmodule /* sram */
+endmodule /* cmem */

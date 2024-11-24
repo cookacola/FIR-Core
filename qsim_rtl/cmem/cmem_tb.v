@@ -3,20 +3,19 @@
 `define QRTR_CLK_PERIOD		#5.000
 `define ON 				1'b0
 `define OFF 			1'b1
-`define HIZ 			{20{1'bZ}}
 `define ITER 			64
 `define BLKS			8
 
-module testbench();
-
+module cmem_tb;
 	integer					i, writing;
 	reg						clk, WEN, CEN;
 	wire			[15:0]	Q7, Q6, Q5, Q4;
 	wire			[15:0]	Q3, Q2, Q1, Q0;
 	reg				[15:0]	D;
-	reg	unsigned	[7:0]	A7, A6, A5, A4;
-	reg	unsigned	[7:0]	A3, A2, A1, A0;
+	reg	unsigned	[5:0]	A7, A6, A5, A4;
+	reg	unsigned	[5:0]	A3, A2, A1, A0;
 
+	/* Instantiate DUT */
 	cmem	DUT(
 				.Q7 (Q7), .Q6(Q6), .Q5(Q5), .Q4(Q4),
 				.Q3 (Q3), .Q2(Q2), .Q1(Q1), .Q0(Q0),
@@ -28,38 +27,31 @@ module testbench();
 				.CEN	(CEN)
 	);
 
+	/* Clock generation */
 	always	begin
-		`HALF_CLK_PERIOD
+		#`HALF_CLK_PERIOD
 		clk	= ~clk;
 	end
 
 	always	@(negedge clk) begin
-		`QRTR_CLK_PERIOD
+		#`QRTR_CLK_PERIOD
 		if (writing == 1) begin
+		/* Load random input data */
 			CEN		= `ON;
 			WEN		= `ON;
-			D		= $urandom%1048576;
-		if (writing == 0) begin
+			D		= $urandom%65536;
+		end else begin
+		/* Prepare to read from random addresses */
 			WEN	= `OFF;
 			CEN	= `ON;
-			D	= `HIZ;
-			A7	= $urandom%2048;
-			A6	= $urandom%2048;
-			A5	= $urandom%2048;
-			A4	= $urandom%2048;
-			A3	= $urandom%2048;
-			A2	= $urandom%2048;
-			A1	= $urandom%2048;
-			A0	= $urandom%2048;
-		end
-		else begin
-		end
-	end
-
-	always	@(posedge clk) begin
-		if (writing == 0) begin
-			$fwrite(qsim_out_2, "%d,%d,%d,%d,%d,%d,%d,%d\n",
-				Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0);
+			A7	= $urandom%64;
+			A6	= $urandom%64;
+			A5	= $urandom%64;
+			A4	= $urandom%64;
+			A3	= $urandom%64;
+			A2	= $urandom%64;
+			A1	= $urandom%64;
+			A0	= $urandom%64;
 		end
 	end
 
@@ -78,5 +70,4 @@ module testbench();
 		@(posedge clk);
 		$finish;
 	end
-
 endmodule /* testbench */

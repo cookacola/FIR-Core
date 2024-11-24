@@ -1,13 +1,27 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /tb_alu/clk
-add wave -noupdate /tb_alu/rst
-add wave -noupdate /tb_alu/a
-add wave -noupdate /tb_alu/b
-add wave -noupdate -radix unsigned /tb_alu/alu_out
-add wave -noupdate  /tb_alu/qsim_out_file
-add wave -noupdate -radix unsigned /tb_alu/matlab_out_sum_file
-add wave -noupdate -radix unsigned /tb_alu/matlab_out_prod_file
+add wave -noupdate /cmem_tb/i
+add wave -noupdate /cmem_tb/clk
+add wave -noupdate /cmem_tb/CEN
+add wave -noupdate /cmem_tb/WEN
+add wave -noupdate -radix decimal /cmem_tb/D
+add wave -noupdate -radix unsigned /cmem_tb/Q7
+add wave -noupdate -radix unsigned /cmem_tb/Q6
+add wave -noupdate -radix unsigned /cmem_tb/Q5
+add wave -noupdate -radix unsigned /cmem_tb/Q4
+add wave -noupdate -radix unsigned /cmem_tb/Q3
+add wave -noupdate -radix unsigned /cmem_tb/Q2
+add wave -noupdate -radix unsigned /cmem_tb/Q1
+add wave -noupdate -radix unsigned /cmem_tb/Q0
+add wave -noupdate -radix unsigned /cmem_tb/A7
+add wave -noupdate -radix unsigned /cmem_tb/A6
+add wave -noupdate -radix unsigned /cmem_tb/A5
+add wave -noupdate -radix unsigned /cmem_tb/A4
+add wave -noupdate -radix unsigned /cmem_tb/A3
+add wave -noupdate -radix unsigned /cmem_tb/A2
+add wave -noupdate -radix unsigned /cmem_tb/A1
+add wave -noupdate -radix unsigned /cmem_tb/A0
+add wave -noupdate -radix decimal /cmem_tb/Q
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
@@ -26,5 +40,3 @@ configure wave -timeline 0
 configure wave -timelineunits ps
 update
 WaveRestoreZoom {0 ns} {12 ns}
-
-

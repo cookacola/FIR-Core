@@ -7,8 +7,8 @@ vlib work
 vmap work work
 
 # Include Netlist and Testbench
-vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/rtl/alu.v 
-vlog +acc -incr alu_testb.v
+vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/rtl/cmem/cmem.v
+vlog +acc -incr cmem_tb.v
 vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v 
 
 # Run Simulator 
