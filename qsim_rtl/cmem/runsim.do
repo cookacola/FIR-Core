@@ -12,6 +12,6 @@ vlog +acc -incr cmem_tb.v
 vlog +acc -incr /user/stud/fall23/ns3683/4823/ald-labs/mem_comp/RF1SHD.v 
 
 # Run Simulator 
-vsim +acc -t ps -lib work tb_alu 
+vsim +acc -t ps -lib work cmem_tb
 do waveformat.do   
 run -all

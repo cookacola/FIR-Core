@@ -40,7 +40,8 @@ module cmem_tb;
 			CEN		= `ON;
 			WEN		= `ON;
 			D		= $urandom%65536;
-		end else if (writing == 0) begin
+		end 
+		else if (writing == 0) begin
 		/* Prepare to read from random addresses */
 			WEN	= `OFF;
 			CEN	= `ON;
